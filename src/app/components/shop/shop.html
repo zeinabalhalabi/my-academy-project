@@ -1,0 +1,50 @@
+<section class="shop-banner">
+  <h1>Fashion</h1>
+  <p class="breadcrumb"><a href="#">Home</a> &gt; <span>Shop</span></p>
+</section>
+
+<!-- Category Filter Buttons -->
+<section class="category-bar">
+  <div class="category-container">
+    @for (cat of categories(); track cat) {
+      <button 
+        class="category-btn"
+        [class.active]="selectedCategory() === cat"
+        (click)="selectCategory(cat)">
+        {{ cat | titlecase }}
+      </button>
+    }
+  </div>
+</section>
+
+<main class="shop-container">
+  <!-- Loading State -->
+  @if (loading()) {
+    <div class="loading-spinner">Loading products...</div>
+  } @else {
+    <div class="product-grid">
+      @for (product of products(); track product.id) {
+        <article class="product-card">
+          <div class="image-wrapper">
+            <img [src]="product.image" [alt]="product.title" />
+            <button class="add-cart-btn">ADD TO CART</button>
+          </div>
+
+          <div class="product-info">
+            <div class="category-tag">{{ product.category }}</div>
+            <h3 class="product-title" [title]="product.title">{{ product.title }}</h3>
+            
+            <div class="rating-row">
+              <span class="stars">★ {{ product.rating.rate }}</span>
+              <span class="review-count">({{ product.rating.count }})</span>
+            </div>
+
+            <div class="product-price">${{ product.price.toFixed(2) }}</div>
+          </div>
+        </article>
+      } @empty {
+        <div class="empty-state">No products found for this category.</div>
+      }
+    </div>
+  }
+</main>

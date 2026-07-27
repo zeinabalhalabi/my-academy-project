@@ -1,1 +1,78 @@
-<p>cart works!</p>
+<!-- Breadcrumbs Title Section -->
+<section class="cart-header-section">
+  <h1>Shopping Cart</h1>
+  <nav class="breadcrumbs">
+    <a routerLink="/">Home</a>
+    <span class="separator">&gt;</span>
+    <span class="current">Your Shopping Cart</span>
+  </nav>
+</section>
+
+<main class="cart-main-container">
+  @if (cartItems().length > 0) {
+    <div class="table-wrapper">
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th class="text-right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of cartItems(); track item.id) {
+            <tr>
+              <td>
+                <div class="product-cell">
+                  <div class="product-img-box">
+                    <img [src]="item.imageUrl" [alt]="item.name" />
+                  </div>
+                  <div class="product-details">
+                    <h3>{{ item.name }}</h3>
+                    <p class="product-color">Color: <span>{{ item.color }}</span></p>
+                    <button (click)="onRemove(item.id)" class="btn-remove">
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              </td>
+              <td class="price-cell">{{ item.price | currency }}</td>
+              <td>
+                <div class="quantity-control">
+                  <button (click)="onQuantityChange(item.id, -1)">-</button>
+                  <span class="qty-num">{{ item.quantity }}</span>
+                  <button (click)="onQuantityChange(item.id, 1)">+</button>
+                </div>
+              </td>
+              <td class="total-cell">
+                {{ (item.price * item.quantity) | currency }}
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Cart Summary & Checkout -->
+    <div class="summary-container">
+      <div class="summary-card">
+        <div class="subtotal-row">
+          <span>Subtotal</span>
+          <span>{{ subtotal() | currency }}</span>
+        </div>
+        <button class="btn-checkout">
+          Checkout
+        </button>
+      </div>
+    </div>
+  } @else {
+    <!-- Empty Cart State -->
+    <div class="empty-cart">
+      <p>Your shopping cart is currently empty.</p>
+      <a routerLink="/home" class="btn-continue">
+        Continue Shopping
+      </a>
+    </div>
+  }
+</main>

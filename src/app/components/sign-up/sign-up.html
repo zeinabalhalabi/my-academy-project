@@ -1,1 +1,41 @@
-<p>sign-up works!</p>
+<div class="signup-container">
+    <div class="image-section">
+    
+    <img src="woman-colorful-bg.jpg" alt="FASCO Fashion Banner">
+  </div>
+  <div class="form-section">
+    <div class="form-container">
+    <h1 class="logo">FASCO</h1>
+      <h2 class="form-title">Create a FASCO Account</h2>
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <div class="input">
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" formControlName="firstName" required>
+        </div>
+        <div class="input">
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" formControlName="lastName" required>
+        </div>
+        <div class="input">
+            <label for="email">Email:</label>
+            <input type="email" id="email" formControlName="email" required>
+        </div>
+        <div class="input">
+            <label for="username">Username:</label>
+            <input type="text" id="username" formControlName="username" required>
+        </div>
+
+        <div class="input">
+            <label for="password">Password:</label>
+            <input type="password" id="password" formControlName="password" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+        <p>Already have an account? <a routerLink="/login" class="btn-secondary">Log in</a></p>
+        
+    </form>
+    </div>
+    </div>
+    </div>
+
+

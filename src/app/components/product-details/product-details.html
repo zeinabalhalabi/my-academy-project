@@ -1,1 +1,42 @@
-<p>product-details works!</p>
+@if (isLoading()) {
+  <div class="state-container">Loading product details...</div>
+} @else if (error()) {
+  <div class="state-container error">{{ error() }}</div>
+} @else if (product(); as prod) {
+  <main class="pdp-container">
+    <div class="pdp-grid">
+      
+      <!-- Single Image Section -->
+      <section class="image-section">
+        <img [src]="prod.image" [alt]="prod.title" class="main-img" />
+      </section>
+
+      <!-- Details Section -->
+      <section class="details-section">
+        <header class="product-header">
+          <p class="category-name">{{ prod.category }}</p>
+          <h1 class="product-title">{{ prod.title }}</h1>
+          
+          <div class="rating-row">
+            <span class="star-rating">★ {{ prod.rating.rate }}</span>
+            <span class="rating-count">({{ prod.rating.count }} reviews)</span>
+          </div>
+
+          <div class="price-row">
+            <span class="price-current">${{ prod.price.toFixed(2) }}</span>
+          </div> 
+        </header>
+
+        <p class="description">{{ prod.description }}</p>
+
+        <!-- Separate Add to Cart Component -->
+        <app-add-to-cart 
+            [product]="prod"
+            [maxStock]="15" 
+          
+        />
+      </section>
+
+    </div>
+  </main>
+}

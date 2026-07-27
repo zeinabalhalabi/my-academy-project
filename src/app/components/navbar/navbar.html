@@ -1,0 +1,76 @@
+<header class="navbar-header">
+  <div class="navbar-container">
+    
+    <!-- Brand Logo -->
+    <a routerLink="/" class="brand-logo">
+      Fasco
+    </a>
+
+    <!-- Navigation Links -->
+    <nav class="nav-links">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      <a routerLink="/shop" routerLinkActive="active">Shop</a>
+      <a routerLink="/new-arrivals" routerLinkActive="active">New Arrivals</a>
+      <a routerLink="/packages" routerLinkActive="active">Packages</a>
+    </nav>
+
+    <!-- Navigation Actions -->
+    <div class="nav-actions">
+      
+      <!-- Search Toggle Button -->
+      <button type="button" class="icon-btn" (click)="toggleSearch()" aria-label="Toggle search">
+        <img src="https://api.iconify.design/lucide:search.svg" alt="Search" class="nav-icon" />
+      </button>
+
+      <!-- Cart Button (Navigates to /cart) -->
+      <a routerLink="/cart" class="icon-btn cart-btn-wrapper" aria-label="Cart">
+        <img src="https://api.iconify.design/lucide:shopping-bag.svg" alt="Cart" class="nav-icon" />
+        @if (cartItemCount() > 0) {
+        <span class="cart-badge">{{ cartItemCount() }}</span>
+  }
+</a>
+      <!-- Profile Button / Dropdown Container -->
+      <div class="profile-wrapper">
+        <button type="button" class="icon-btn" (click)="handleProfileClick()" aria-label="Account profile">
+          <img src="https://api.iconify.design/lucide:user.svg" alt="Profile" class="nav-icon" />
+        </button>
+
+        <!-- Profile Info Popup (Visible only when signed in and toggled) -->
+        @if (isProfileMenuOpen() && currentUser(); as user) {
+          <div class="profile-dropdown">
+            <div class="profile-header">
+              <p class="profile-name">{{ user.username }}</p>
+              <p class="profile-email">{{ user.email }}</p>
+            </div>
+            <div class="profile-body">
+              <p class="info-label">Address:</p>
+              <p class="info-value">{{ user.address }}</p>
+            </div>
+            <div class="profile-footer">
+              <button type="button" class="btn-signout" (click)="signOut()">Sign Out</button>
+            </div>
+          </div>
+        }
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Expandable Search Bar input -->
+  @if (isSearchOpen()) {
+  <div class="search-bar-overlay">
+    <form (submit)="onSearchSubmit($event)" class="search-form">
+      <input 
+        type="text" 
+        placeholder="Search for products, brands, or categories..." 
+        [value]="searchQuery()"
+        (input)="onSearchInput($event)"
+        class="search-input"
+        autofocus
+      />
+      <button type="submit" class="btn-search-submit">Search</button>
+      <button type="button" class="btn-search-close" (click)="toggleSearch()">✕</button>
+    </form>
+  </div>
+  }
+</header>
