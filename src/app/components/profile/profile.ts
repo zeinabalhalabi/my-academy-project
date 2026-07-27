@@ -1,11 +1,11 @@
-import { Component, OnInit, inject, signal} from '@angular/core';
-import { CommonModule } from '@angular/common'; // <-- Required for @if blocks
+import { Component, OnInit, inject, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { AuthService, IUser } from '../../core/auth/auth-service';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule], // <-- Must be included here
+  imports: [CommonModule],
   templateUrl: './profile.html',
   styleUrls: ['./profile.css']
 })
@@ -20,17 +20,13 @@ export class Profile implements OnInit {
 
     this.authService.fetchUserProfile().subscribe({
       next: (data) => {
-        // If the request succeeds, this block should run
         console.log('2. Data received from backend:', data);
-        
         this.user.set(data);
-        this.isLoading.set(false); // <-- This is what hides the loading text!
+        this.isLoading.set(false);
       },
       error: (err) => {
-        // If the request fails, this block should run
         console.error('2. Error occurred:', err);
-        
-        this.isLoading.set(false); // <-- Hides loading even if there's an error
+        this.isLoading.set(false);
       }
     });
   }

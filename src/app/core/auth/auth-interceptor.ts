@@ -16,12 +16,11 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private router: Router) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // 1. Retrieve JWT string from local storage
     const token = localStorage.getItem('token'); 
 
     let clonedReq = req;
 
-    // 2 & 3. If token is present, clone request and add Authorization header
+    // Attach token if present[cite: 1]
     if (token) {
       clonedReq = req.clone({
         setHeaders: {
@@ -30,14 +29,12 @@ export class AuthInterceptor implements HttpInterceptor {
       });
     }
 
-    // 4. Handle request and catch errors (401, 404)
+    // Handle request and catch errors (401, 404)[cite: 1]
     return next.handle(clonedReq).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
-          // Redirect to login page on unauthorized error
           this.router.navigate(['/login']);
         } else if (error.status === 404) {
-          // Redirect to not found page on 404 error
           this.router.navigate(['/not-found']);
         }
         return throwError(() => error);
