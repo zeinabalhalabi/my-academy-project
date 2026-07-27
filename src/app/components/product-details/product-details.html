@@ -29,14 +29,29 @@
 
         <p class="description">{{ prod.description }}</p>
 
-        <!-- Separate Add to Cart Component -->
-        <app-add-to-cart 
+        <!-- Fixed Component Tag (Not Self-Closing) -->
+        <div class="cart-action-wrapper" style="margin-top: 1.5rem; position: relative;">
+          <app-add-to-cart 
             [product]="prod"
-            [maxStock]="15" 
-          
-        />
+            [maxStock]="15">
+          </app-add-to-cart>
+        </div>
       </section>
 
     </div>
+
+    <!-- People Also Loved Section -->
+    <section class="related-products-section" style="margin-top: 4rem; border-top: 1px solid #eee; padding-top: 2rem;">
+      <h2 style="margin-bottom: 1.5rem; font-size: 1.5rem; color: #333;">People Also Loved</h2>
+      
+      <div class="related-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.5rem;">
+        @for (related of relatedProducts(); track related.id) {
+          <app-product-cards [product]="related"></app-product-cards>
+        } @empty {
+          <p style="color: #666;">No related items found.</p>
+        }
+      </div>
+    </section>
+
   </main>
 }
