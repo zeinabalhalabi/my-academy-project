@@ -1,0 +1,11 @@
+<div class="action-group">
+  <div class="quantity-picker">
+    <button type="button" (click)="updateQuantity(-1)" class="qty-btn" aria-label="Decrease quantity">-</button>
+    <span class="qty-display">{{ quantity() }}</span>
+    <button type="button" (click)="updateQuantity(1)" class="qty-btn" aria-label="Increase quantity">+</button>
+  </div>
+  
+  <button type="button" (click)="onAddToCart()" class="btn-add-cart">
+    Add to Cart
+  </button>
+</div>
