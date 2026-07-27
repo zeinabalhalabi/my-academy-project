@@ -1,1 +1,119 @@
-<p>profile works!</p>
+<main class="profile-main-container">
+  @if (isLoading()) {
+    <div class="loading-state">
+      <p class="loading-text">Loading profile...</p>
+    </div>
+  } @else if (user(); as userData) {
+    
+    <!-- Profile Hero Header -->
+    <section class="profile-hero">
+      <div class="profile-hero-left">
+        <div class="avatar-box">
+          <span class="material-symbols-outlined avatar-icon">person</span>
+        </div>
+        <div>
+          <h1 class="profile-title">{{ userData.firstName }} {{ userData.lastName }}</h1>
+          <p class="profile-subtitle">FASCO Verified Member • {{ userData.email }}</p>
+        </div>
+      </div>
+      
+      <button type="button" class="editorial-btn outline" (click)="onLogout()">
+        Sign Out
+      </button>
+    </section>
+
+    <!-- Content Grid -->
+    <div class="profile-grid">
+      
+      <!-- Account Information Card -->
+      <div class="editorial-card account-card">
+        <div class="card-header">
+          <h2 class="card-heading">Account Information</h2>
+          <span class="material-symbols-outlined card-icon">lock</span>
+        </div>
+        
+        <div class="details-grid">
+          <div class="detail-item">
+            <span class="detail-label">First Name</span>
+            <span class="detail-value">{{ userData.firstName }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Last Name</span>
+            <span class="detail-value">{{ userData.lastName }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Email Address</span>
+            <span class="detail-value">{{ userData.email }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Username</span>
+            <span class="detail-value">{{ userData.username }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rewards Banner Card -->
+      <div class="editorial-card rewards-card">
+        <div class="rewards-content">
+          <p class="rewards-tag">FASCO Editorial Privilege</p>
+          <h3 class="rewards-heading">Enjoy private early access to seasonal collections.</h3>
+          <div class="progress-track">
+            <div class="progress-fill"></div>
+          </div>
+          <p class="rewards-status">Status: Active Member</p>
+        </div>
+        <div class="abstract-circle circle-1"></div>
+      </div>
+
+    </div>
+
+    <!-- Order History Section -->
+    <section class="orders-section">
+      <div class="orders-header">
+        <h2 class="orders-heading">Recent Orders</h2>
+        <span class="orders-link">View Archive</span>
+      </div>
+
+      <div class="orders-list">
+        <div class="order-row">
+          <div class="order-col">
+            <p class="order-id">#ORD-9921</p>
+            <p class="order-date">24 Oct 2023</p>
+          </div>
+          <div class="order-col">
+            <p class="order-desc">Silk Drape Trench &amp; Accessories</p>
+          </div>
+          <div class="order-col">
+            <span class="order-status-badge">Delivered</span>
+          </div>
+          <div class="order-col text-right">
+            <p class="order-price">$1,240.00</p>
+          </div>
+        </div>
+
+        <div class="order-row">
+          <div class="order-col">
+            <p class="order-id">#ORD-8854</p>
+            <p class="order-date">12 Sep 2023</p>
+          </div>
+          <div class="order-col">
+            <p class="order-desc">Gold Eclipse Earrings</p>
+          </div>
+          <div class="order-col">
+            <span class="order-status-badge">Delivered</span>
+          </div>
+          <div class="order-col text-right">
+            <p class="order-price">$85.00</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  } @else {
+    <div class="unauthorized-container">
+      <p class="unauthorized-title">Session Expired or Unauthorized</p>
+      <p class="unauthorized-subtitle">Please log in to view your profile details.</p>
+      <a href="/login" class="editorial-btn solid">Go to Login</a>
+    </div>
+  }
+</main>

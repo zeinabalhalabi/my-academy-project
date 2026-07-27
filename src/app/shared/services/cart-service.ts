@@ -32,7 +32,7 @@ addToCart(product: Omit<CartItem, 'quantity'>, quantity: number = 1): void {
         updated[existingIndex].quantity += quantity;
         return updated;
       }
-      return [...items, { ...product, quantity: 1 }];
+      return [...items, { ...product, quantity: quantity }];
     });
   }
 

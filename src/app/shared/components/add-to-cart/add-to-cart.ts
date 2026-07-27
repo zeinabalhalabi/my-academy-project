@@ -20,7 +20,8 @@ export class AddToCart {
   // State signal for local quantity picker
   quantity = signal<number>(1);
 
-  updateQuantity(delta: number): void {
+  updateQuantity(delta: number, event?: MouseEvent): void {
+    event?.stopPropagation();
     const next = this.quantity() + delta;
     if (next >= 1 && next <= this.maxStock()) {
       this.quantity.set(next);
@@ -28,6 +29,7 @@ export class AddToCart {
   }
 
   onAddToCart(): void {
+    event?.stopPropagation
     const item = this.product();
     const selectedQty = this.quantity();
 

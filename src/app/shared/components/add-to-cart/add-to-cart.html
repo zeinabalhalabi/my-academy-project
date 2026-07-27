@@ -1,11 +1,12 @@
-<div class="action-group">
-  <div class="quantity-picker">
-    <button type="button" (click)="updateQuantity(-1)" class="qty-btn" aria-label="Decrease quantity">-</button>
-    <span class="qty-display">{{ quantity() }}</span>
-    <button type="button" (click)="updateQuantity(1)" class="qty-btn" aria-label="Increase quantity">+</button>
+<!-- Adding stopPropagation to the main container prevents the card click -->
+<div class="add-to-cart-container" (click)="$event.stopPropagation()">
+  <div class="quantity-controls">
+    <button type="button" class="qty-btn" (click)="updateQuantity(-1); $event.stopPropagation()">-</button>
+    <span class="qty-number">{{ quantity() }}</span>
+    <button type="button" class="qty-btn" (click)="updateQuantity(1); $event.stopPropagation()">+</button>
   </div>
-  
-  <button type="button" (click)="onAddToCart()" class="btn-add-cart">
-    Add to Cart
+
+  <button type="button" class="add-cart-btn" (click)="onAddToCart(); $event.stopPropagation()">
+    ADD TO CART
   </button>
 </div>

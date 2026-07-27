@@ -1,0 +1,17 @@
+<div class="product-card" (click)="goToDetails()">
+  <div class="product-image">
+    <img [src]="product().image" [alt]="product().title" />
+    <app-add-to-cart [product]="adaptedProduct()"></app-add-to-cart>
+  </div>
+  <div class="product-details">
+    <div>
+      <h3 class="product-title" [title]="product().title">{{ product().title }}</h3>
+      <p class="product-category">{{ product().category }}</p>
+    </div>
+    <span class="price">{{ product().price | currency }}</span>
+  </div>
+  <div class="rating">
+    ★ {{ product().rating?.rate || 4.5 }} 
+    <span>({{ product().rating?.count || 0 }} Reviews)</span>
+  </div>
+</div>
