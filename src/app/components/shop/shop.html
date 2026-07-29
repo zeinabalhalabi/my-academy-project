@@ -1,9 +1,12 @@
 <section class="shop-banner">
   <h1>Fashion</h1>
-  <p class="breadcrumb"><a href="#">Home</a> &gt; <span>Shop</span></p>
+  <p class="breadcrumb">
+    <a href="#">Home</a> &gt; <span>Shop</span>
+  </p>
 </section>
 
 <!-- Category Filter Buttons -->
+
 <section class="category-bar">
   <div class="category-container">
     @for (cat of categories(); track cat) {
@@ -18,15 +21,104 @@
 </section>
 
 <main class="shop-container">
-  @if (loading()) {
-    <div class="loading-spinner">Loading products...</div>
-  } @else {
-    <div class="product-grid">
-      @for (product of products(); track product.id) {
-        <app-product-cards [product]="product"></app-product-cards>
-      } @empty {
-        <div class="empty-state">No products found for this category.</div>
-      }
-    </div>
-  }
+
+  <!-- Sidebar Filters -->
+
+  <aside class="filters-sidebar">
+
+<div class="filters-header">
+  <h2>Filters</h2>
+  <button type="button" class="clear-filters">
+    Clear all
+  </button>
+</div>
+
+<!-- Size Filter -->
+<div class="filter-section">
+  <h3>Size</h3>
+
+  <div class="size-options">
+    <button type="button" class="size-button">S</button>
+    <button type="button" class="size-button">M</button>
+    <button type="button" class="size-button">L</button>
+    <button type="button" class="size-button">XL</button>
+  </div>
+</div>
+
+<!-- Price Filter -->
+<div class="filter-section">
+  <h3>Price</h3>
+
+  <label class="checkbox-option">
+    <input type="checkbox">
+    <span>$0 - $50</span>
+  </label>
+
+  <label class="checkbox-option">
+    <input type="checkbox">
+    <span>$50 - $100</span>
+  </label>
+
+  <label class="checkbox-option">
+    <input type="checkbox">
+    <span>$100 - $200</span>
+  </label>
+
+  <label class="checkbox-option">
+    <input type="checkbox">
+    <span>$200 - $400</span>
+  </label>
+
+  <label class="checkbox-option">
+    <input type="checkbox">
+    <span>$400 - $1000</span>
+  </label>
+  </div>
+
+  </aside>
+
+  <!-- Products Section -->
+
+  <section class="products-section">
+
+<!-- Products Header -->
+<div class="products-header">
+
+  <p class="results-count">
+    Showing {{ products().length }} results
+  </p>
+
+  <!-- Sort Dropdown -->
+  <div class="sort-container">
+    <label for="sort-products">Sort by:</label>
+
+    <select id="sort-products" class="sort-select">
+      <option value="best-selling">Best selling</option>
+      <option value="highest-rating">Highest rating</option>
+      <option value="price-low-high">Price: Low to High</option>
+      <option value="price-high-low">Price: High to Low</option>
+      <option value="a-z">A-Z (Alphabetical)</option>
+    </select>
+  </div>
+
+</div>
+
+
+<!-- Products -->
+@if (loading()) {
+  <div class="loading-spinner">Loading products...</div>
+} @else {
+  <div class="product-grid">
+    @for (product of products(); track product.id) {
+      <app-product-cards [product]="product"></app-product-cards>
+    } @empty {
+      <div class="empty-state">
+        No products found for this category.
+      </div>
+    }
+  </div>
+}
+
+  </section>
+
 </main>

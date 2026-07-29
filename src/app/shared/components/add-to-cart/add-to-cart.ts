@@ -1,6 +1,8 @@
 import { Component, inject, input, signal } from '@angular/core';
 import { CartService } from '../../services/cart-service';
 import { Product } from '../../interfaces/product';
+import { AuthService } from '../../../core/auth/auth-service';
+import { Router } from '@angular/router';
 // Interface matching FakeStoreApi product structure
 
 @Component({
@@ -12,7 +14,8 @@ import { Product } from '../../interfaces/product';
 })
 export class AddToCart {
   private cartService = inject(CartService);
-
+  private authService = inject(AuthService);
+  private router = inject(Router);
   // Inputs for product data and stock limit
   product = input.required<Product>();
   maxStock = input<number>(20);
@@ -29,7 +32,12 @@ export class AddToCart {
   }
 
   onAddToCart(): void {
-    event?.stopPropagation
+     // Check if the user is logged in
+    if (!this.authService.isAuthenticated()) {
+      this.router.navigate(['/login']);
+      return;
+    }
+    
     const item = this.product();
     const selectedQty = this.quantity();
 

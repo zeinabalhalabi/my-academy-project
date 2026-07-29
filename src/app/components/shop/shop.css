@@ -214,3 +214,258 @@
   color: var(--primary-color);
   margin-top: auto;
 }
+/* ========================================
+FILTER SIDEBAR + SORTING
+Added styles
+======================================== */
+
+/* Shop Layout */
+.shop-container {
+display: grid;
+grid-template-columns: 220px 1fr;
+gap: 2.5rem;
+align-items: start;
+}
+
+/* Filter Sidebar */
+.filters-sidebar {
+width: 100%;
+}
+
+.filters-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding-bottom: 1rem;
+margin-bottom: 1.5rem;
+border-bottom: 1px solid var(--border-color);
+}
+
+.filters-header h2 {
+margin: 0;
+font-size: 1.25rem;
+font-weight: 600;
+color: var(--primary-color);
+}
+
+.clear-filters {
+padding: 0;
+border: none;
+background: none;
+font-family: inherit;
+font-size: 0.75rem;
+color: var(--accent-color);
+cursor: pointer;
+}
+
+.clear-filters:hover {
+text-decoration: underline;
+}
+
+/* Filter Sections */
+.filter-section {
+padding-bottom: 1.5rem;
+margin-bottom: 1.5rem;
+border-bottom: 1px solid var(--border-color);
+}
+
+.filter-section h3 {
+margin: 0 0 1rem;
+font-size: 0.95rem;
+font-weight: 600;
+color: var(--primary-color);
+}
+
+/* Size Buttons */
+.size-options {
+display: flex;
+gap: 0.5rem;
+flex-wrap: wrap;
+}
+
+.size-button {
+width: 38px;
+height: 38px;
+display: flex;
+align-items: center;
+justify-content: center;
+border: 1px solid var(--border-color);
+border-radius: 6px;
+background-color: #ffffff;
+color: var(--text-main);
+font-family: inherit;
+font-size: 0.8rem;
+cursor: pointer;
+transition: all 0.2s ease;
+}
+
+.size-button:hover {
+border-color: var(--accent-color);
+color: var(--accent-color);
+}
+
+.size-button:focus {
+background-color: var(--primary-color);
+border-color: var(--primary-color);
+color: #ffffff;
+}
+
+/* Price Checkboxes */
+.checkbox-option {
+display: flex;
+align-items: center;
+gap: 0.6rem;
+margin-bottom: 0.75rem;
+font-size: 0.85rem;
+color: var(--text-muted);
+cursor: pointer;
+}
+
+.checkbox-option:last-child {
+margin-bottom: 0;
+}
+
+.checkbox-option input {
+width: 16px;
+height: 16px;
+accent-color: var(--accent-color);
+cursor: pointer;
+}
+
+/* Color Buttons */
+.color-options {
+display: flex;
+flex-wrap: wrap;
+gap: 0.6rem;
+}
+
+.color-button {
+width: 30px;
+height: 30px;
+border-radius: 50%;
+border: 2px solid transparent;
+cursor: pointer;
+transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.color-button:hover {
+transform: scale(1.1);
+}
+
+.color-button.black {
+background-color: #222222;
+}
+
+.color-button.white {
+background-color: #ffffff;
+border-color: #d9d9d9;
+}
+
+.color-button.red {
+background-color: #fb6376;
+}
+
+.color-button.blue {
+background-color: #6b8eae;
+}
+
+.color-button.beige {
+background-color: #d8c3a5;
+}
+
+/* Products Section */
+.products-section {
+min-width: 0;
+}
+
+/* Products Header */
+.products-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-bottom: 2rem;
+}
+
+.results-count {
+margin: 0;
+font-size: 0.875rem;
+color: var(--text-muted);
+}
+
+/* Sort Dropdown */
+.sort-container {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+}
+
+.sort-container label {
+font-size: 0.875rem;
+color: var(--text-muted);
+}
+
+.sort-select {
+min-width: 190px;
+padding: 0.65rem 0.75rem;
+border: 1px solid var(--border-color);
+border-radius: 6px;
+background-color: #ffffff;
+color: var(--text-main);
+font-family: inherit;
+font-size: 0.875rem;
+cursor: pointer;
+outline: none;
+transition: border-color 0.2s ease;
+}
+
+.sort-select:hover,
+.sort-select:focus {
+border-color: var(--primary-color);
+}
+
+/* ========================================
+RESPONSIVE DESIGN
+======================================== */
+
+@media (max-width: 768px) {
+
+.shop-container {
+grid-template-columns: 1fr;
+gap: 2rem;
+}
+
+.filters-sidebar {
+width: 100%;
+}
+
+.products-header {
+flex-direction: column;
+align-items: flex-start;
+gap: 1rem;
+}
+
+.sort-container {
+width: 100%;
+justify-content: space-between;
+}
+
+.sort-select {
+flex: 1;
+max-width: 250px;
+}
+
+}
+
+@media (max-width: 500px) {
+
+.sort-container {
+flex-direction: column;
+align-items: flex-start;
+}
+
+.sort-select {
+width: 100%;
+max-width: none;
+}
+
+}

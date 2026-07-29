@@ -1,18 +1,27 @@
 <header class="navbar-header">
   <div class="navbar-container">
     
-    <!-- Brand Logo -->
+    <!-- Brand Logo 
     <a routerLink="/" class="brand-logo">
       Fasco
-    </a>
+    </a> -->
 
-    <!-- Navigation Links -->
+    <a routerLink="/" class="logo font-display text-primary">ELÉGANCE</a>
+
+    <!-- Navigation Links 
     <nav class="nav-links">
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
       <a routerLink="/shop" routerLinkActive="active">Shop</a>
       <a routerLink="/new-arrivals" routerLinkActive="active">New Arrivals</a>
       <a routerLink="/packages" routerLinkActive="active">Packages</a>
+    </nav> -->
+    <nav class="desktop-nav">
+        <a class="nav-link font-body" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+        <a class="nav-link font-body" routerLink="/shop" routerLinkActive="active">Shop</a>
+        <a class="nav-link font-body" routerLink="/new-arrivals" routerLinkActive="active">New Arrivals</a>
+        <a class="nav-link font-body" routerLink="/packages" routerLinkActive="active">Deals</a>
     </nav>
+    
 
     <!-- Navigation Actions -->
     <div class="nav-actions">

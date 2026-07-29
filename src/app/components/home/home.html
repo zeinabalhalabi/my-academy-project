@@ -1,150 +1,298 @@
-<main>
-  <!-- Hero Banner -->
-  <section class="hero-section">
-    <div class="hero-card">
-      <div class="hero-side-img">
-        <img src="https://picsum.photos/300/400?random=1" alt="Fashion Model Left" />
-      </div>
-      
-      <div class="hero-content">
-        <div class="mini-looks">
-          <img src="https://picsum.photos/100/130?random=2" alt="Mini Look 1" />
-          <img src="https://picsum.photos/100/130?random=3" alt="Mini Look 2" />
-        </div>
-        
-        <div class="hero-text">
-          <p class="sub-heading">Ultimate</p>
-          <h1 class="main-title">SALE</h1>
-          <p class="tagline">New Collection</p>
-        </div>
-        
-        <button class="btn-primary">SHOP NOW</button>
-      </div>
-      
-      <div class="hero-side-img">
-        <img src="https://picsum.photos/300/400?random=4" alt="Fashion Model Right" />
-      </div>
-    </div>
-  </section>
-
-  <!-- Categories Section -->
-  <section class="categories-section">
-    <div class="section-header">
-      <h2>Shop By Category</h2>
-      <p>Explore our curated collections across different categories to find your perfect style.</p>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELÉGANCE | Premium Fashion & Lifestyle</title>
     
-    <div class="categories-grid">
-      <div class="category-card tall">
-        <img src="https://picsum.photos/400/530?random=5" alt="Women's Clothing" />
-        <div class="category-label">Women's Clothing</div>
-      </div>
-
-      <div class="categories-stacked">
-        <div class="category-card">
-          <img src="https://picsum.photos/400/250?random=6" alt="Accessories" />
-          <div class="category-label">Accessories</div>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Be+Vietnam+Pro:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Link to your new CSS file -->
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <!-- TopNavBar 
+    <header class="header">
+        <div class="container header-container">
+            <h1 class="logo font-display text-primary">ELÉGANCE</h1>
+            <nav class="desktop-nav">
+                <a class="nav-link font-body active" href="#">Home</a>
+                <a class="nav-link font-body" href="#">Shop</a>
+                <a class="nav-link font-body" href="#">New Arrivals</a>
+                <a class="nav-link font-body" href="#">Deals</a>
+            </nav>
+            <div class="header-actions">
+                <button class="material-symbols-outlined icon-primary">search</button>
+                <button class="material-symbols-outlined icon-primary">favorite</button>
+                <button class="material-symbols-outlined icon-primary">shopping_bag</button>
+            </div>
         </div>
-        <div class="category-card">
-          <img src="https://picsum.photos/400/250?random=7" alt="Electronics" />
-          <div class="category-label">Electronics</div>
+    </header> -->
+
+    <main>
+        <!-- Hero Section: Ultimate Sale -->
+        <section class="container section-margin">
+            <div class="hero-container hero-bg pastel-border editorial-shadow">
+                <!-- Left Image -->
+                <div class="hero-image">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDTsllF4CX5M6ywpP2Q0dqPm08Tmzsh4MzN-NwhJWBO_zEXXIANMKBipdxzx7TTrm5fkxfauS6g6IvXW5pYpE9mRbRs2gDbTIol3sXTd-6YS9orRLPZC_4vHgAUpij78pwxdeINKJQ5PwTRTsXKd2TstsurGlyRTl6vj4HrkK_z5YCqUpYgY19Qu8oFL-LnaD0t9jjD1DvJI-7uN9pjgtcgQuWdzCtsFZFD_QiQCloEM0-lPc6voMq" alt="Stylish young man">
+                </div>
+                <!-- Center Content -->
+                <div class="hero-content">
+                    <div class="hero-titles">
+                        <h2 class="font-display hero-title text-outline-pink">Ultimate</h2>
+                        <h2 class="font-display hero-title text-primary">Sale</h2>
+                    </div>
+                    <p class="font-body text-label-caps text-secondary">New Collection</p>
+                    <button class="btn btn-primary font-body editorial-shadow">Shop Now</button>
+                </div>
+                <!-- Right Image -->
+                <div class="hero-image">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK1o40QLYlcaUQHG-o-Rf05PhEgLMZdXOxVzLz9mq4C3peE6fJS-d8HoL3z7ipirn0C7OTW54cWdqXVyyZARMdOYA_wqEgmTXd7YFQ4cDg4HyozWTsiwYknvydKyLOntx47ESBC6tZejAzOuMIEW0uAvaZVbLW5Kp_aul8TTAAU9I_hl2REyNUmQb6Vgt_PRLI7RPJDRH8gtCumwh8iC29FcG8kHljqMV8vG9BGCfmVEMr5qxR2vmk" alt="Male model">
+                </div>
+            </div>
+        </section>
+
+        <!-- Shop By Category -->
+        <section class="container section-padding">
+            <h3 class="font-display text-headline-lg text-primary text-center mb-lg">Shop By Category</h3>
+            <div class="category-grid">
+                <!-- Women's Clothing -->
+                <div class="cat-wrapper cat-women pastel-border editorial-shadow">
+                    <div class="cat-bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA6DVZ3BCLKI_T1oTK_1WbdxDETkbSwrUc6lGa1C4lgTSMXX9-m_9wb0kOhMX_RkzfS0hMbfqC9ZPt11DWiJLHnlmlTy97DM9rHSmLUG3a0MhlwoYCz_iNEeTALfgFLUDhur1IDXLJrtagdGBwyKXUsLDrwatVKl6pFt_w-dUGyCuCNVYQwtYJfPpY8p3tSqdTCKM8lEcugo9Z8QVjOPQUIJCEvz2JYKK3V-a-Ya2uBprZm4AxQx72A')"></div>
+                    <div class="cat-overlay cat-overlay-bottom-gradient">
+                        <h4 class="font-display text-headline-md text-white">Women’s Clothing</h4>
+                    </div>
+                </div>
+                <!-- Jewelry and Others -->
+                <div class="cat-right">
+                    <!-- Jewelry -->
+                    <div class="cat-wrapper cat-jewelry pastel-border editorial-shadow">
+                        <div class="cat-bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBtXXJ_NVL5YiuqzsTm9NfBl5fMedebX2HRxDzq0_uxeApY7iYWgpPXEFqHzfSaT2LQENYX-FlSSVNDxsLgcBSThUPIExBV0NyXQyCqdxp8wJCgm4MjxJXvB-S6mV7wajtYV6vwR8CDfCeiQBuHBKT3Dt5L2PjHD0fU_3A8ZERnx5YaA8-AT3tD17V-HcS5B6KIil2qKIvt_rKaUKW3Ita6X2KPnSq0lGzVriGNd82NXKOBcNv4rN1H')"></div>
+                        <div class="cat-overlay cat-overlay-center">
+                            <span class="font-display text-headline-md text-white pill">Jewelry</span>
+                        </div>
+                    </div>
+                    <div class="cat-bottom">
+                        <!-- Electronics -->
+                        <div class="cat-wrapper cat-item pastel-border editorial-shadow">
+                            <div class="cat-bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCU68kfVnVxoyC5P89UQdUlhcCDYz0EPEa_QKpKxUv99immd7dTkjnC_ZyJ8XAMuHetTmBpwS9gRe9o6aA1CcaqfVuHtWpHaW4HixENAeXU5Dy4qw3APZ9yD3927DQ9FGxMfaPMlo1X05wzRQOsE0F7jAIrIJGLSGF7LFhK1Lf99IfatL_lLVRPqhmQC4XjbvUiaDI_BQBwWB3N_M-Oe0yceMKHQppd09lWm77CrdBb77dQNANMlzWJ')"></div>
+                            <div class="cat-overlay cat-overlay-bottom">
+                                <h4 class="font-display text-headline-md text-white">Electronics</h4>
+                            </div>
+                        </div>
+                        <!-- Men's Clothing -->
+                        <div class="cat-wrapper cat-item pastel-border editorial-shadow">
+                            <div class="cat-bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVbW_KBJdlWIpxJlB1ar8OkS0GIElqFv7y5Q3KDkAm9ohWc0nozW-NAUhgh_AhKVckmW9SUuW1edce74IjPt57RVjyZfnyTgBnn6i0igyf0vrQwyD1Tw8VIkFuN4IKn9wxZWyWYFUc8hzQfCc4DTzoa-Bh8YkdVt_1S8emj3_DEBiXgs-uXavtUh4d2zLDT3NrfSmg6dk1afXvPW9yEBuecXli9wGCgaNw9XIGMSkbHVemNAQxHu9b')"></div>
+                            <div class="cat-overlay cat-overlay-bottom">
+                                <h4 class="font-display text-headline-md text-white">Men’s Clothing</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deals Of The Month -->
+        <section class="container section-padding">
+            <div class="deals-container hero-bg pastel-border editorial-shadow">
+                <div class="deals-content">
+                    <h3 class="font-display text-primary deals-title">Deals Of The Month</h3>
+                    <p class="font-body text-secondary max-w-md">Indulge in our curated selection of seasonal essentials. This month only, enjoy exclusive pricing on high-end fashion and lifestyle accessories designed for the modern connoisseur.</p>
+                    <div>
+                        <button class="btn btn-primary font-body editorial-shadow">Buy Now</button>
+                    </div>
+                    <div class="timer-section">
+                        <h4 class="font-display text-headline-md text-primary mb-sm">Hurry, Before It's Too Late!</h4>
+                        <div class="timer-container">
+                            <div class="timer-box">
+                                <div class="timer-num pastel-border editorial-shadow font-display">02</div>
+                                <span class="timer-label font-body">Days</span>
+                            </div>
+                            <div class="timer-box">
+                                <div class="timer-num pastel-border editorial-shadow font-display">06</div>
+                                <span class="timer-label font-body">Hr</span>
+                            </div>
+                            <div class="timer-box">
+                                <div class="timer-num pastel-border editorial-shadow font-display">05</div>
+                                <span class="timer-label font-body">Mins</span>
+                            </div>
+                            <div class="timer-box">
+                                <div class="timer-num pastel-border editorial-shadow font-display">30</div>
+                                <span class="timer-label font-body">Sec</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="deals-images">
+                    <div class="deal-img-wrapper editorial-shadow">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz_XGn6pNhq66C89TPppOzDVwPLjfXqxm8e4HVSNKFBGmcZk_5huZ6PTyVYF40ogjjSm_q_51gUdWxvyPOA5p0m6B3L1pikX_C3xUihssAIvSjS7WqHtaSzrnAuxa3OS2nUK1VGsQ7YrFK50_sH-OXGG9xQUXPwu7hvr9WPUxAzkof5XvPOFope5KuM_9k9bmpxGMMouIzslngp5Pu405MYSda8CEdL6N21f-AgiQblNaItaItWgtD" alt="Fashion deal 1">
+                        <div class="deal-badge">
+                            <p class="font-body text-label-caps">01 — Spring Sale</p>
+                            <p class="font-body text-bold">30% OFF</p>
+                        </div>
+                    </div>
+                    <div class="deal-img-wrapper editorial-shadow hidden-md">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDYC4p1gx_uljjeDjMgH59n3WpbRvFR_i51LjKFQEspijPZVEK1Fonj8cYarYZuiX_olnHg8eEjthk9ckaiu20hAyZElyBSm2YJ90mPZ8mpU9MViD7Q-IeQ9MuFOZz49KYMwXh7_4X4bikHFdoNscPG19X8EWJHYhRA_K_kEJsPhHU72v_4hBfbtPgRbjqAtW5B7Ga0wzED0UDx_HimgJG9ADU8w56pRKLnl2UjJPHuix1pMOE3gVT" alt="Fashion deal 2">
+                    </div>
+                    <div class="deal-img-wrapper editorial-shadow hidden-lg">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-msOaqXt493CYdgeHUTWjuATs19VnW7pcLECI7T7UBnYU4Ah1lUt4U8SvIaLCcphY3wcFIfF6Tu0FO3AII2hlXefLo9-IPn7DWmZP1RtIeQlwjq9rkEEPbMQq0XsTH8-D351Mj8oUKRnmcEkS-bN5yyM23byPIm8UCu2cjxrzQfmnRpZtWGmJGWRWpo30GXFbkKrOYGkccvcQ_Scg6CwdR1bsnF7efOiu04JVpeW4csXR8nJ_hdIz" alt="Fashion deal 3">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Arrivals (Dynamic Integration) -->
+        <section class="container section-padding">
+            <div class="text-center mb-lg">
+                <h3 class="font-display text-headline-lg text-primary mb-sm">New Arrivals</h3>
+                <p class="font-body text-secondary max-w-2xl mx-auto">Discover our latest additions, carefully curated for those who appreciate the finer details of craftsmanship and contemporary design.</p>
+            </div>
+
+            <!-- Dynamic Products Grid -->
+            <div class="products-scroll no-scrollbar">
+              @for (item of products(); track item.id) {
+                <div class="product-slide">
+                  <app-product-cards [product]="item"></app-product-cards>
+                </div>
+              }
+            </div>
+
+            <div class="text-center mt-lg">
+                <button class="btn btn-primary font-body editorial-shadow px-large">View All</button>
+            </div>
+        </section>
+
+        <!-- Trust Badges -->
+        <section class="trust-section">
+            <div class="container trust-grid">
+                <div class="trust-item">
+                    <span class="material-symbols-outlined trust-icon">workspace_premium</span>
+                    <div>
+                        <h5 class="font-body text-label-caps">High Quality</h5>
+                        <p class="font-body text-body-sm text-secondary">Crafted from top materials</p>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <span class="material-symbols-outlined trust-icon">verified_user</span>
+                    <div>
+                        <h5 class="font-body text-label-caps">Warranty Protection</h5>
+                        <p class="font-body text-body-sm text-secondary">Over 2 years coverage</p>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <span class="material-symbols-outlined trust-icon">local_shipping</span>
+                    <div>
+                        <h5 class="font-body text-label-caps">Free Shipping</h5>
+                        <p class="font-body text-body-sm text-secondary">Order over $150</p>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <span class="material-symbols-outlined trust-icon">support_agent</span>
+                    <div>
+                        <h5 class="font-body text-label-caps">24 / 7 Support</h5>
+                        <p class="font-body text-body-sm text-secondary">Dedicated assistance</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="container section-padding text-center">
+            <h3 class="font-display text-headline-lg text-primary mb-sm">This Is What Our Customers Say</h3>
+            <p class="font-body text-secondary max-w-2xl mx-auto mb-xl">Authentic experiences from our global community of style enthusiasts.</p>
+            
+            <div class="testimonials-scroll no-scrollbar">
+                <div class="testimonial-card pastel-border editorial-shadow">
+                    <div class="testimonial-img">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJmREy4oOD3LumzcWKcnGIiXWaKlMoCAPARY-Us5Nu2TKJtxO2tOhYvaw1fN38Y-p6qh6V6110U2ZPORWl4DflcGv3nSJEi6aRVEpPZy8R6ApFUAsAhENFx1HNvygr2nSrHI1Qk9wNdWhTBhn81iMaKl2jf860t91oxad2pjbhg9NrktAIk15LM953dAjmJHx5P9Cve5ljhLJt0uofUhRORoO8bXF56V6kjU3unIAMIE8gnUEZJfBJ" alt="Customer James Wilson">
+                    </div>
+                    <div class="testimonial-content">
+                        <p class="font-body text-secondary italic">"The attention to detail in their collections is truly remarkable. I've never felt more confident in my everyday wear. Absolute luxury experience."</p>
+                        <div class="testimonial-author">
+                            <div>
+                                <h4 class="font-body text-body-lg text-bold text-on-surface">James Wilson</h4>
+                                <p class="font-body text-body-sm text-secondary">Verified Buyer</p>
+                            </div>
+                            <div class="stars">
+                                <span class="material-symbols-outlined fill-icon">star</span>
+                                <span class="material-symbols-outlined fill-icon">star</span>
+                                <span class="material-symbols-outlined fill-icon">star</span>
+                                <span class="material-symbols-outlined fill-icon">star</span>
+                                <span class="material-symbols-outlined fill-icon">star</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dots">
+                <button class="dot active"></button>
+                <button class="dot"></button>
+                <button class="dot"></button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <!-- Brand Column -->
+            <div class="footer-col-4">
+                <h2 class="font-display text-headline-lg text-primary">ELÉGANCE</h2>
+                <p class="font-body text-secondary max-w-sm text-body-sm">Elevating everyday life with premium fashion and lifestyle essentials. Discover the art of dressing well with our curated collections designed for the modern connoisseur.</p>
+                <div class="social-btns">
+                    <button class="social-btn editorial-shadow"><span class="material-symbols-outlined">share</span></button>
+                    <button class="social-btn editorial-shadow"><span class="material-symbols-outlined">photo_camera</span></button>
+                    <button class="social-btn editorial-shadow"><span class="material-symbols-outlined">play_arrow</span></button>
+                </div>
+            </div>
+            <!-- Links Column 1 -->
+            <div class="footer-col-2">
+                <h4 class="font-body text-body-lg text-bold text-on-surface">Shop</h4>
+                <ul class="font-body footer-links">
+                    <li><a href="#">Women's Clothing</a></li>
+                    <li><a href="#">Men's Clothing</a></li>
+                    <li><a href="#">Fine Jewelry</a></li>
+                    <li><a href="#">Electronics</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                </ul>
+            </div>
+            <!-- Links Column 2 -->
+            <div class="footer-col-2">
+                <h4 class="font-body text-body-lg text-bold text-on-surface">Company</h4>
+                <ul class="font-body footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <!-- Newsletter Column -->
+            <div class="footer-col-4">
+                <h4 class="font-body text-body-lg text-bold text-on-surface">Newsletter</h4>
+                <p class="font-body text-body-sm text-secondary">Subscribe to receive updates, access to exclusive deals, and more.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault();">
+                    <input class="newsletter-input font-body" placeholder="Enter your email address" type="email">
+                    <button class="btn btn-primary font-body editorial-shadow">Subscribe</button>
+                </form>
+            </div>
         </div>
-      </div>
-
-      <div class="category-card tall">
-        <img src="https://picsum.photos/400/530?random=8" alt="Men's Clothing" />
-        <div class="category-label">Men's Clothing</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Deals Of The Month -->
-  <section class="deals-section">
-    <div class="deals-container">
-      <div class="deals-info">
-        <h2>Deals Of The Month</h2>
-        <p>Scelerisque duis ultrices sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin.</p>
-        <button class="btn-primary">Buy Now</button>
-        
-        <div class="countdown-block">
-          <h3>Hurry, Before It's Too Late!</h3>
-          <div class="timer-grid">
-            <div class="timer-box"><span>02</span><small>Days</small></div>
-            <div class="timer-box"><span>06</span><small>Hrs</small></div>
-            <div class="timer-box"><span>05</span><small>Mins</small></div>
-            <div class="timer-box"><span>30</span><small>Secs</small></div>
-          </div>
+        <!-- Bottom Bar -->
+        <div class="container footer-bottom">
+            <p class="font-body">© 2026 ELÉGANCE. All rights reserved.</p>
+            <div class="footer-legal font-body">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Settings</a>
+            </div>
         </div>
-      </div>
-
-      <div class="deals-image-wrapper">
-        <div class="deal-card main-card">
-          <img src="https://picsum.photos/260/320?random=9" alt="Floral Summer Dress" />
-          <div class="deal-card-info">
-            <span>Floral Summer Dress</span>
-            <span class="price">$49.00</span>
-          </div>
-        </div>
-        <div class="deal-card background-card">
-          <img src="https://picsum.photos/260/320?random=10" alt="Secondary Deal Model" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- New Arrivals (Connected to FakeStoreAPI) -->
-  <section class="arrivals-section">
-    <div class="section-header">
-      <h2>New Arrivals</h2>
-      <p>Explore our latest items handpicked from top designers across the globe.</p>
-    </div>
-
-    <!-- The dynamic product grid -->
-    <div class="products-grid">
-      @for (item of products(); track item.id) {
-        <app-product-cards [product]="item"></app-product-cards>
-      }
-    </div>
-
-    <div class="center-btn">
-      <button class="btn-primary">View More</button>
-    </div>
-  </section>
-
-  <!-- Trust Badges -->
-  <section class="trust-section">
-    <div class="trust-grid">
-      <div class="trust-item">
-        <div class="icon-circle">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-        </div>
-        <h4>High Quality</h4>
-        <p>Crafted from top materials</p>
-      </div>
-
-      <div class="trust-item">
-        <div class="icon-circle">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-        </div>
-        <h4>Warranty Protection</h4>
-        <p>Over 2 years warranty</p>
-      </div>
-
-      <div class="trust-item">
-        <div class="icon-circle">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-        </div>
-        <h4>Free Shipping</h4>
-        <p>Order over $150</p>
-      </div>
-
-      <div class="trust-item">
-        <div class="icon-circle">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.172l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-        </div>
-        <h4>24 / 7 Support</h4>
-        <p>Dedicated support</p>
-      </div>
-    </div>
-  </section>
-</main>
+    </footer>
+</body>
+</html>

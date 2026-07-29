@@ -5,11 +5,14 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 
+export type UserRole = 'user' | 'admin';
+
 export interface IUser {
     firstName: string;
     lastName: string;
     email: string;
     username: string;
+    userRole: UserRole;
     //password: string;
 }
 
@@ -22,7 +25,7 @@ export class AuthService {
     private http = inject(HttpClient);
     private router = inject(Router);
 
-    tokenKey = 'auth_token';
+    private tokenKey = 'auth_token';
     currentUser: IUser | undefined;
     
     constructor(){
@@ -35,6 +38,7 @@ export class AuthService {
         this.cookieService.set(this.tokenKey, token, {path : '/', expires: 7});
     }
     //token decoding functionality
+    
     private decodeAndSetUser(token: string): void {
         try {
             // Decodes the payload payload portion of a standard JWT
@@ -54,21 +58,7 @@ export class AuthService {
         }
     }
 
-    fetchUserProfile(): Observable<IUser> {
-        const token = this.getToken();
-        const headers = new HttpHeaders({
-            'Authorization': `Bearer ${token}`
-        });
-        return this.http.get<IUser>('http://localhost:4000/api/user', { headers }).pipe(
-            tap((user) => {
-                this.currentUser = user;
-            }),
-            catchError((err) => {
-                this.logout();
-                return throwError(() => err);
-            })
-        );
-    }
+    
     register(payload: IUser): Observable<IUser> {
         return this.http.post<IUser>(
             'http://localhost:4000/api/auth/register', payload);
@@ -91,8 +81,21 @@ export class AuthService {
                 catchError((error) => throwError(() => error)) 
         );
     }
+
+    fetchUserProfile(): Observable<IUser> {
+        
+        return this.http.get<IUser>('http://localhost:4000/api/user').pipe(
+            tap((user) => {
+                this.currentUser = user;
+            }),
+            catchError((err) => {
+                this.logout();
+                return throwError(() => err);
+            })
+        );
+    }
     isAuthenticated(): boolean{
-        return !!this.currentUser;
+        return !!this.getToken();
     }
     logout(): void {
         this.cookieService.delete(this.tokenKey, '/');
