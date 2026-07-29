@@ -1,7 +1,8 @@
 import { Component, inject, signal, computed } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CartService } from '../../shared/services/cart-service';
-import { AuthService } from '../../core/auth/auth-service';
+import { AuthService, IUser} from '../../core/auth/auth-service';
+
 
 export interface UserProfile {
   username: string;
@@ -18,7 +19,7 @@ export interface UserProfile {
 export class NavbarComponent {
   private router = inject(Router);
   private cartService = inject(CartService);
-  private authService = inject(AuthService);
+   authService = inject(AuthService);
 
   cartItemCount = computed(() =>
     this.cartService.cartItems().reduce((sum, item) => sum + item.quantity, 0)

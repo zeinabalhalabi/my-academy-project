@@ -19,6 +19,5 @@ export const AdminGuard: CanActivateFn = () => {
   }
 
   console.log('Admin access denied');
-
   return router.createUrlTree(['/home']);
 };

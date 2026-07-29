@@ -3,6 +3,14 @@ import { CommonModule, TitleCasePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { IProductCard } from '../../shared/interfaces/product-card';
 import { ProductCards } from '../../shared/components/product-cards/product-cards';
+import { RouterLink } from '@angular/router';
+
+type SortOption =
+  | 'most-popular'
+  | 'highest-rating'
+  | 'price-low-high'
+  | 'price-high-low'
+  | 'a-z';
 
 @Component({
   selector: 'app-shop',
@@ -11,12 +19,14 @@ import { ProductCards } from '../../shared/components/product-cards/product-card
   templateUrl: './shop.html',
   styleUrls: ['./shop.css']
 })
+
 export class Shop implements OnInit {
   private http = inject(HttpClient);
 
   products = signal<IProductCard[]>([]);
   categories = signal<string[]>([]);
   selectedCategory = signal<string>('all');
+  selectedSort = signal<SortOption>('most-popular');
   loading = signal<boolean>(true);
 
   ngOnInit(): void {
@@ -46,6 +56,7 @@ export class Shop implements OnInit {
         next: (data) => {
           this.products.set(data);
           this.loading.set(false);
+          this.sortProducts();
         },
         error: (err) => {
           console.error('Error fetching products:', err);
@@ -59,5 +70,49 @@ export class Shop implements OnInit {
       this.selectedCategory.set(category);
       this.fetchProducts();
     }
+  }
+
+  onSortChange(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const sortOption = selectElement.value as SortOption;
+
+    this.selectedSort.set(sortOption);
+    this.sortProducts();
+  }
+
+  private sortProducts(): void{
+    const sortedProducts = [...this.products()];
+    const sortOption = this.selectedSort();
+
+    if (sortOption === 'most-popular') {
+      sortedProducts.sort(
+        (a, b) => b.rating.count - a.rating.count
+      );
+    }
+
+    if (sortOption === 'highest-rating') {
+      sortedProducts.sort(
+        (a, b) => b.rating.rate - a.rating.rate
+      );
+    }
+
+    if (sortOption === 'price-low-high') {
+      sortedProducts.sort(
+        (a, b) => a.price - b.price
+      );
+    }
+
+    if (sortOption === 'price-high-low') {
+      sortedProducts.sort(
+        (a, b) => b.price - a.price
+      );
+    }
+
+    if (sortOption === 'a-z') {
+      sortedProducts.sort(
+        (a, b) => a.title.localeCompare(b.title)
+      );
+    }
+    this.products.set(sortedProducts);
   }
 }

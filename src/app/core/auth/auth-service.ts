@@ -83,17 +83,15 @@ export class AuthService {
     }
 
     fetchUserProfile(): Observable<IUser> {
-        
-        return this.http.get<IUser>('http://localhost:4000/api/user').pipe(
-            tap((user) => {
-                this.currentUser = user;
-            }),
-            catchError((err) => {
-                this.logout();
-                return throwError(() => err);
-            })
-        );
-    }
+        return this.http
+        .get<IUser>('http://localhost:4000/api/user')
+    .pipe(
+      catchError((err) => {
+        this.logout();
+        return throwError(() => err);
+      })
+    );
+}
     isAuthenticated(): boolean{
         return !!this.getToken();
     }

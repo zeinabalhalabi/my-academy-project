@@ -20,8 +20,12 @@ readonly subtotal = computed(() =>
     this.cartItems().reduce((sum, item) => sum + (item.price * item.quantity), 0)
 );
 
-readonly grandTotal = computed(() => 
-    this.subtotal()
+readonly shipping = computed(() =>
+  this.cartItems().length > 0 ? 10 : 0
+);
+
+readonly grandTotal = computed(() =>
+  this.subtotal() + this.shipping()
 );
 
 addToCart(product: Omit<CartItem, 'quantity'>, quantity: number = 1): void {

@@ -1,1 +1,222 @@
-<p>checkout works!</p>
+<div class="checkout-page">
+  <div class="breadcrumb-bar">
+    <div class="breadcrumb-container">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <button type="button" (click)="goToCart()" class="breadcrumb-link">Cart</button>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">Checkout</span>
+      </nav>
+    </div>
+  </div>
+
+  <main class="checkout-main">
+    <div class="checkout-heading">
+      <span class="heading-eyebrow">SECURE CHECKOUT</span>
+      <h1>Complete Your Order</h1>
+      <p>Review your order and enter your delivery and payment details below.</p>
+    </div>
+
+    @if (cartService.cartItems().length === 0) {
+      <section class="empty-cart">
+        <div class="empty-cart-icon">🛍️</div>
+        <h2>Your cart is empty</h2>
+        <p>Add some beautiful pieces to your cart before checking out.</p>
+        <button type="button" class="primary-button" (click)="goToCart()">Return to Cart</button>
+      </section>
+    } @else {
+      <div class="checkout-grid">
+        <div class="checkout-form-column">
+          <form [formGroup]="checkoutForm" (ngSubmit)="placeOrder()" novalidate>
+            <section class="checkout-card">
+              <div class="section-heading">
+                <div class="section-number">01</div>
+                <div>
+                  <h2>Account</h2>
+                  <p>Your account information</p>
+                </div>
+              </div>
+
+              <div class="account-info">
+                <div class="account-icon">
+                  {{ authService.currentUser?.firstName?.charAt(0) || 'U' }}
+                </div>
+                <div class="account-details">
+                  <strong>{{ authService.currentUser?.firstName }} {{ authService.currentUser?.lastName }}</strong>
+                  <span>{{ authService.currentUser?.email }}</span>
+                </div>
+                <div class="logged-in-badge">✓ Logged in</div>
+              </div>
+            </section>
+
+            <section class="checkout-card">
+              <div class="section-heading">
+                <div class="section-number">02</div>
+                <div>
+                  <h2>Delivery Information</h2>
+                  <p>Where should we deliver your order?</p>
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group full-width">
+                  <label for="country">Country / Region</label>
+                  <select id="country" formControlName="country" class="form-control" [class.invalid]="isInvalid('country')">
+                    <option value="Lebanon">Lebanon</option>
+                    <option value="United States">United States</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="Canada">Canada</option>
+                  </select>
+                  @if (isInvalid('country')) {
+                    <small class="error-message">{{ getErrorMessage('country') }}</small>
+                  }
+                </div>
+
+                <div class="form-group full-width">
+                  <label for="address">Street Address</label>
+                  <input id="address" type="text" formControlName="address" class="form-control" [class.invalid]="isInvalid('address')" placeholder="Enter your street address">
+                  @if (isInvalid('address')) {
+                    <small class="error-message">{{ getErrorMessage('address') }}</small>
+                  }
+                </div>
+
+                <div class="form-group">
+                  <label for="city">City</label>
+                  <input id="city" type="text" formControlName="city" class="form-control" [class.invalid]="isInvalid('city')" placeholder="Beirut">
+                  @if (isInvalid('city')) {
+                    <small class="error-message">{{ getErrorMessage('city') }}</small>
+                  }
+                </div>
+
+                <div class="form-group">
+                  <label for="postalCode">Postal Code</label>
+                  <input id="postalCode" type="text" formControlName="postalCode" class="form-control" [class.invalid]="isInvalid('postalCode')" placeholder="0000">
+                  @if (isInvalid('postalCode')) {
+                    <small class="error-message">{{ getErrorMessage('postalCode') }}</small>
+                  }
+                </div>
+              </div>
+            </section>
+
+            <section class="checkout-card">
+              <div class="section-heading">
+                <div class="section-number">03</div>
+                <div>
+                  <h2>Payment</h2>
+                  <p>Secure payment information</p>
+                </div>
+              </div>
+
+              <div class="payment-method">
+                <div class="payment-method-header">
+                  <div class="payment-title">
+                    <span class="payment-radio">●</span>
+                    <span>Credit / Debit Card</span>
+                  </div>
+                  <div class="card-brands">
+                    <span>VISA</span>
+                    <span>MC</span>
+                  </div>
+                </div>
+
+                <div class="payment-fields">
+                  <div class="form-group full-width">
+                    <label for="cardNumber">Card Number</label>
+                    <input id="cardNumber" type="text" formControlName="cardNumber" class="form-control" [class.invalid]="isInvalid('cardNumber')" placeholder="1234 5678 9012 3456" maxlength="19">
+                    @if (isInvalid('cardNumber')) {
+                      <small class="error-message">{{ getErrorMessage('cardNumber') }}</small>
+                    }
+                  </div>
+
+                  <div class="form-group">
+                    <label for="expiration">Expiration Date</label>
+                    <input id="expiration" type="text" formControlName="expiration" class="form-control" [class.invalid]="isInvalid('expiration')" placeholder="MM/YY" maxlength="5">
+                    @if (isInvalid('expiration')) {
+                      <small class="error-message">{{ getErrorMessage('expiration') }}</small>
+                    }
+                  </div>
+
+                  <div class="form-group">
+                    <label for="cvc">Security Code</label>
+                    <input id="cvc" type="password" formControlName="cvc" class="form-control" [class.invalid]="isInvalid('cvc')" placeholder="•••" maxlength="4">
+                    @if (isInvalid('cvc')) {
+                      <small class="error-message">{{ getErrorMessage('cvc') }}</small>
+                    }
+                  </div>
+
+                  <div class="form-group full-width">
+                    <label for="cardholderName">Cardholder Name</label>
+                    <input id="cardholderName" type="text" formControlName="cardholderName" class="form-control" [class.invalid]="isInvalid('cardholderName')" placeholder="Name as shown on card">
+                    @if (isInvalid('cardholderName')) {
+                      <small class="error-message">{{ getErrorMessage('cardholderName') }}</small>
+                    }
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <div class="mobile-submit">
+              <button type="submit" class="place-order-button">
+                <span>Place Order</span>
+                <span>${{ cartService.grandTotal().toFixed(2) }}</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <aside class="order-summary">
+          <div class="summary-card">
+            <div class="summary-header">
+              <div>
+                <span class="summary-eyebrow">YOUR ORDER</span>
+                <h2>Order Summary</h2>
+              </div>
+              <span class="item-count">{{ cartItemCount }} {{ cartItemCount === 1 ? 'item' : 'items' }}</span>
+            </div>
+
+            <div class="product-list">
+              @for (item of cartService.cartItems(); track item.id) {
+                <div class="product-item">
+                  <div class="product-image-wrapper">
+                    <img [src]="item.imageUrl" [alt]="item.name" class="product-image">
+                    <span class="quantity-badge">{{ item.quantity }}</span>
+                  </div>
+
+                  <div class="product-details">
+                    <h3>{{ item.name }}</h3>
+                    <p>Color: {{ item.color }}</p>
+                    <span>{{ item.quantity }} × ${{ item.price.toFixed(2) }}</span>
+                  </div>
+
+                  <strong class="product-total">${{ (item.price * item.quantity).toFixed(2) }}</strong>
+                </div>
+              }
+            </div>
+
+            <div class="price-breakdown">
+              <div class="price-row">
+                <span>Subtotal</span>
+                <strong>${{ cartService.subtotal().toFixed(2) }}</strong>
+              </div>
+              <div class="price-row">
+                <span>Shipping</span>
+                <strong>Free</strong>
+              </div>
+            </div>
+
+            <div class="total-row">
+              <span>Total</span>
+              <strong>${{ cartService.grandTotal().toFixed(2) }}</strong>
+            </div>
+
+            <button type="button" class="place-order-button desktop-submit" (click)="placeOrder()">
+              <span>Place Order</span>
+              <span>→</span>
+            </button>
+
+            <p class="secure-message">🔒 Your information is securely protected.</p>
+          </div>
+        </aside>
+      </div>
+    }
+  </main>
+</div>

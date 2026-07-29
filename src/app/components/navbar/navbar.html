@@ -1,3 +1,4 @@
+
 <header class="navbar-header">
   <div class="navbar-container">
     
@@ -27,7 +28,7 @@
     <div class="nav-actions">
       
       <!-- Search Toggle Button -->
-      <button type="button" class="icon-btn" (click)="toggleSearch()" aria-label="Toggle search">
+      <button type="button" class="icon-btn" (click)="toggleSearch()" aria-label="Toggle Search">
         <img src="https://api.iconify.design/lucide:search.svg" alt="Search" class="nav-icon" />
       </button>
 
@@ -37,7 +38,12 @@
         @if (cartItemCount() > 0) {
         <span class="cart-badge">{{ cartItemCount() }}</span>
   }
-</a>
+      </a>  
+        @if (authService.currentUser?.userRole == 'admin') {
+        <button routerLink = "/admin-dashboard" type="button" class="icon-btn" aria-label="Admin Dashboard">
+            <img src ="https://api.iconify.design/carbon:dashboard-reference.svg" alt="Admin Dashboard" class="nav-icon" /> 
+        </button>
+    }
       <!-- Profile Button / Dropdown Container -->
       <div class="profile-wrapper">
         <button type="button" class="icon-btn" (click)="handleProfileClick()" aria-label="Account profile">
