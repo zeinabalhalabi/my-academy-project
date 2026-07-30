@@ -18,7 +18,7 @@
 
     @if (cartService.cartItems().length === 0) {
       <section class="empty-cart">
-        <div class="empty-cart-icon">🛍️</div>
+        <div class="empty-cart-icon"></div>
         <h2>Your cart is empty</h2>
         <p>Add some beautiful pieces to your cart before checking out.</p>
         <button type="button" class="primary-button" (click)="goToCart()">Return to Cart</button>
@@ -213,7 +213,7 @@
               <span>→</span>
             </button>
 
-            <p class="secure-message">🔒 Your information is securely protected.</p>
+            <p class="secure-message">Your information is securely protected.</p>
           </div>
         </aside>
       </div>

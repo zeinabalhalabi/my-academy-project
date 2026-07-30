@@ -1,12 +1,13 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-
+import { QueryParamsHandling } from '@angular/router';
 import { IProductCard } from '../../shared/interfaces/product-card';
 import { ProductCards } from '../../shared/components/product-cards/product-cards';
 import { ProductService } from '../../shared/services/product-service';
+import { RouterLink } from "@angular/router";
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ProductCards],
+  imports: [ProductCards, RouterLink],
   templateUrl: './home.html',
   styleUrls: ['./home.css'],
 })

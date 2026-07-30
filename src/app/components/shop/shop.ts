@@ -3,7 +3,8 @@ import { CommonModule, TitleCasePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { IProductCard } from '../../shared/interfaces/product-card';
 import { ProductCards } from '../../shared/components/product-cards/product-cards';
-import { RouterLink } from '@angular/router';
+import { map } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 type SortOption =
   | 'most-popular'
@@ -22,16 +23,25 @@ type SortOption =
 
 export class Shop implements OnInit {
   private http = inject(HttpClient);
+  private route = inject(ActivatedRoute);
 
   products = signal<IProductCard[]>([]);
   categories = signal<string[]>([]);
   selectedCategory = signal<string>('all');
   selectedSort = signal<SortOption>('most-popular');
   loading = signal<boolean>(true);
-
+  //this part will be used so when we go to a certain category it will show up
+   
+  
   ngOnInit(): void {
     this.fetchCategories();
+      this.route.queryParams.subscribe(params => {
+      const cat = params['category'];
+      if (cat) {
+        this.selectedCategory.set(cat);
+      }
     this.fetchProducts();
+      });
   }
 
   fetchCategories(): void {
@@ -54,7 +64,7 @@ export class Shop implements OnInit {
     this.http.get<IProductCard[]>(url)
       .subscribe({
         next: (data) => {
-          this.products.set(data);
+          this.products.set(data || []);
           this.loading.set(false);
           this.sortProducts();
         },

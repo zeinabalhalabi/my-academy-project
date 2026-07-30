@@ -15,24 +15,7 @@
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
-    <!-- TopNavBar 
-    <header class="header">
-        <div class="container header-container">
-            <h1 class="logo font-display text-primary">ELÉGANCE</h1>
-            <nav class="desktop-nav">
-                <a class="nav-link font-body active" href="#">Home</a>
-                <a class="nav-link font-body" href="#">Shop</a>
-                <a class="nav-link font-body" href="#">New Arrivals</a>
-                <a class="nav-link font-body" href="#">Deals</a>
-            </nav>
-            <div class="header-actions">
-                <button class="material-symbols-outlined icon-primary">search</button>
-                <button class="material-symbols-outlined icon-primary">favorite</button>
-                <button class="material-symbols-outlined icon-primary">shopping_bag</button>
-            </div>
-        </div>
-    </header> -->
-
+    
     <main>
         <!-- Hero Section: Ultimate Sale -->
         <section class="container section-margin">
@@ -62,36 +45,37 @@
             <h3 class="font-display text-headline-lg text-primary text-center mb-lg">Shop By Category</h3>
             <div class="category-grid">
                 <!-- Women's Clothing -->
-                <div class="cat-wrapper cat-women pastel-border editorial-shadow">
-                    <div class="cat-bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA6DVZ3BCLKI_T1oTK_1WbdxDETkbSwrUc6lGa1C4lgTSMXX9-m_9wb0kOhMX_RkzfS0hMbfqC9ZPt11DWiJLHnlmlTy97DM9rHSmLUG3a0MhlwoYCz_iNEeTALfgFLUDhur1IDXLJrtagdGBwyKXUsLDrwatVKl6pFt_w-dUGyCuCNVYQwtYJfPpY8p3tSqdTCKM8lEcugo9Z8QVjOPQUIJCEvz2JYKK3V-a-Ya2uBprZm4AxQx72A')"></div>
+                <a routerLink="/shop" [queryParams]="{ category: &quot;women's clothing&quot;}"  class="cat-wrapper cat-women pastel-border editorial-shadow">
+                    <div class="cat-bg" style="background-image: url('https://www.oneteaspoon.com/cdn/shop/files/26458A_JETTBLACK_1.jpg?v=1757399118&width=1500')"></div>
                     <div class="cat-overlay cat-overlay-bottom-gradient">
                         <h4 class="font-display text-headline-md text-white">Women’s Clothing</h4>
                     </div>
-                </div>
+                </a>
                 <!-- Jewelry and Others -->
                 <div class="cat-right">
-                    <!-- Jewelry -->
-                    <div class="cat-wrapper cat-jewelry pastel-border editorial-shadow">
-                        <div class="cat-bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBtXXJ_NVL5YiuqzsTm9NfBl5fMedebX2HRxDzq0_uxeApY7iYWgpPXEFqHzfSaT2LQENYX-FlSSVNDxsLgcBSThUPIExBV0NyXQyCqdxp8wJCgm4MjxJXvB-S6mV7wajtYV6vwR8CDfCeiQBuHBKT3Dt5L2PjHD0fU_3A8ZERnx5YaA8-AT3tD17V-HcS5B6KIil2qKIvt_rKaUKW3Ita6X2KPnSq0lGzVriGNd82NXKOBcNv4rN1H')"></div>
-                        <div class="cat-overlay cat-overlay-center">
-                            <span class="font-display text-headline-md text-white pill">Jewelry</span>
+                    <!-- Men's Clothing-->
+                    <a routerLink="/shop" [queryParams]="{ category: &quot;men's clothing&quot; }" class="cat-wrapper cat-jewelry pastel-border editorial-shadow">
+                        <div class="cat-bg" style="background-image: url('https://img.magnific.com/free-photo/portrait-handsome-confident-stylish-hipster-lambersexual-modelman-dressed-black-jacket-jeans-fashion-male-posing-studio-near-grey-wall_158538-24009.jpg')"></div>
+                        <div class="cat-overlay cat-overlay-bottom">
+                            <span class="font-display text-headline-md text-white">Men's Clothing</span>
                         </div>
-                    </div>
+                       
+                    </a>
                     <div class="cat-bottom">
                         <!-- Electronics -->
-                        <div class="cat-wrapper cat-item pastel-border editorial-shadow">
-                            <div class="cat-bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCU68kfVnVxoyC5P89UQdUlhcCDYz0EPEa_QKpKxUv99immd7dTkjnC_ZyJ8XAMuHetTmBpwS9gRe9o6aA1CcaqfVuHtWpHaW4HixENAeXU5Dy4qw3APZ9yD3927DQ9FGxMfaPMlo1X05wzRQOsE0F7jAIrIJGLSGF7LFhK1Lf99IfatL_lLVRPqhmQC4XjbvUiaDI_BQBwWB3N_M-Oe0yceMKHQppd09lWm77CrdBb77dQNANMlzWJ')"></div>
+                        <a routerLink="/shop" [queryParams]="{ category: 'electronics' }" class="cat-wrapper cat-item pastel-border editorial-shadow">
+                            <div class="cat-bg" style="background-image: url('https://img.magnific.com/free-photo/digital-device-eletronic-networking-media_53876-31695.jpg?semt=ais_hybrid&w=740&q=80')"></div>
                             <div class="cat-overlay cat-overlay-bottom">
                                 <h4 class="font-display text-headline-md text-white">Electronics</h4>
                             </div>
-                        </div>
-                        <!-- Men's Clothing -->
-                        <div class="cat-wrapper cat-item pastel-border editorial-shadow">
-                            <div class="cat-bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVbW_KBJdlWIpxJlB1ar8OkS0GIElqFv7y5Q3KDkAm9ohWc0nozW-NAUhgh_AhKVckmW9SUuW1edce74IjPt57RVjyZfnyTgBnn6i0igyf0vrQwyD1Tw8VIkFuN4IKn9wxZWyWYFUc8hzQfCc4DTzoa-Bh8YkdVt_1S8emj3_DEBiXgs-uXavtUh4d2zLDT3NrfSmg6dk1afXvPW9yEBuecXli9wGCgaNw9XIGMSkbHVemNAQxHu9b')"></div>
+                        </a>
+                        <!-- Jewelery -->
+                        <a routerLink="/shop" [queryParams]="{ category: 'jewelery' }"  class="cat-wrapper cat-item pastel-border editorial-shadow">
+                            <div class="cat-bg" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7v6Lc3VW6BWxe-GoSVG1eER_XMbjkYa22gkZGwj0hyAUdDosR6NcDef4&s=10')"></div>
                             <div class="cat-overlay cat-overlay-bottom">
-                                <h4 class="font-display text-headline-md text-white">Men’s Clothing</h4>
+                                <h4 class="font-display text-headline-md text-white">Jewelery</h4>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
