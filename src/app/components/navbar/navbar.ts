@@ -2,7 +2,10 @@ import { Component, inject, signal, computed } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CartService } from '../../shared/services/cart-service';
 import { AuthService, IUser} from '../../core/auth/auth-service';
-
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 export interface UserProfile {
   username: string;
@@ -12,14 +15,14 @@ export interface UserProfile {
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, CommonModule, ReactiveFormsModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })
 export class NavbarComponent {
   private router = inject(Router);
   private cartService = inject(CartService);
-   authService = inject(AuthService);
+  authService = inject(AuthService);
 
   cartItemCount = computed(() =>
     this.cartService.cartItems().reduce((sum, item) => sum + item.quantity, 0)
@@ -38,14 +41,17 @@ export class NavbarComponent {
     }
   }
   onSearchInput(event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
-    this.searchQuery.set(inputElement.value);
+    const inputElement = (event.target as HTMLInputElement).value;
+    this.searchQuery.set(inputElement);
   }
   onSearchSubmit(event: Event): void {
     event.preventDefault(); // Prevents default page refresh
     const query = this.searchQuery().trim();
     if (query) {
-      this.router.navigate(['/products'], { queryParams: { search: query } });
+      this.router.navigate(['/shop'], { 
+        queryParams: { search: query },
+        queryParamsHandling: 'merge' 
+      });
       this.isSearchOpen.set(false);
       this.searchQuery.set('');
     }

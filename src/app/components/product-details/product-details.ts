@@ -20,7 +20,7 @@ export class ProductDetails implements OnInit {
   isLoading = signal<boolean>(true);
   error = signal<string | null>(null);
 
-  // Type this as IProductCard[] to match the ProductCards component
+
   relatedProducts = signal<IProductCard[]>([]); 
 
   ngOnInit(): void {

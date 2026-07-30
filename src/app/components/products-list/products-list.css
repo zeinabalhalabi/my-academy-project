@@ -1,5 +1,48 @@
-:host {
-  display: block;
+/* Container sizing */
+.grid-wrapper {
   width: 100%;
-  height: 500px;
+  height: 550px;
+}
+
+/* 7. Custom Colors and Typography Theme Override */
+.custom-elegance-theme {
+  /* Fonts & Text */
+  --ag-font-family: 'Inter', sans-serif;
+  --ag-font-size: 13px;
+  
+  --ag-header-background-color: #ffdccc;
+  --ag-header-foreground-color: #ffffff;
+  --ag-header-cell-hover-background-color: #fb6376;
+  
+  /* Grid Body Colors */
+  --ag-background-color: #ffffff;
+  --ag-odd-row-background-color: #fff9ec; /* Matches dashboard body bg */
+  --ag-row-hover-color: rgba(93, 26, 34, 0.08);
+  --ag-selected-row-background-color: rgba(93, 26, 34, 0.15);
+  
+  /* Borders and Accent */
+  --ag-border-color: rgba(93, 26, 34, 0.15);
+  --ag-accent-color: #fb6376;
+  
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Style for Delete Button inside cells */
+:host ::ng-deep .btn-delete {
+  background: transparent;
+  border: none;
+  color: #5d2a42;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+:host ::ng-deep .btn-delete:hover {
+  background-color: rgba(211, 47, 47, 0.12);
+  transform: scale(1.1);
 }

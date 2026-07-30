@@ -1,1 +1,147 @@
-<p>admin-dashboard works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>ELEGANCE Admin Dashboard - Product Management</title>
+  
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Volkhov:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="admin-dashboard.css"/>
+</head>
+<body>
+
+  <div class="app-layout">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <!-- Header Section -->
+      <div class="sidebar-header">
+        <div class="user-profile">
+          <div class="avatar-container">
+            <img class="avatar-img" alt="Admin avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwj71hvD1hDqKZn0Atx0PGIBmmYzUhHCfB_P7gkJzlHt_HOtPn6Q07KRUXVUIQhEYwaxz0ybBmQsac7G2FpfmmA_q6WYD1pey-Q5sh549qfLRs5AtYsLAumRLheREaWgcc_Qe8WfIUS0XiEkbWVNYNsp7l9bX3YOg_zdyH-0_9k3S5tMp2PmI5TAqSoWo5jc98UBzLk_OvwPi12KmRax59CXt_V8quiQsmrCbFDDdPpgLqO0CYpChQHXqmsGOp8zE7bCSGdr2pJNs"/>
+          </div>
+          <div>
+            <p class="user-title">Admin Portal</p>
+            <p class="user-role">Store Manager</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Items -->
+      <nav class="sidebar-nav custom-scrollbar">
+        <a class="nav-item" href="#">
+          <span class="material-symbols-outlined">dashboard</span>
+          <span>Dashboard</span>
+        </a>
+        <a class="nav-item" href="#">
+          <span class="material-symbols-outlined">analytics</span>
+          <span>Analytics</span>
+        </a>
+        <!-- Active Link -->
+        <a class="nav-item active" href="#">
+          <span class="material-symbols-outlined">inventory_2</span>
+          <span>Products</span>
+        </a>
+        <a class="nav-item" href="#">
+          <span class="material-symbols-outlined">shopping_cart</span>
+          <span>Orders</span>
+        </a>
+        <a class="nav-item" href="#">
+          <span class="material-symbols-outlined">group</span>
+          <span>Customers</span>
+        </a>
+      </nav>
+
+      <!-- Logout -->
+      <div class="sidebar-footer">
+        <button class="logout-btn">
+          <span class="material-symbols-outlined logout-icon">logout</span>
+          <a routerLink = "/home">Return back to home</a>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- Top Header Action Row -->
+      <header class="page-header">
+        <div>
+          <p class="header-subtitle">Catalog Management</p>
+          <h2 class="header-title">Products</h2>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-primary">
+            <span class="material-symbols-outlined">add</span> Add New Product
+          </button>
+        </div>
+      </header>
+
+      <!-- Products Section -->
+      <section class="products-section">
+        
+        <!-- Controls Bar -->
+        <div class="controls-bar">
+          <div class="search-box">
+            <span class="material-symbols-outlined search-icon">search</span>
+            <input class="search-input" placeholder="Filter by name, category, SKU..." type="text"/>
+          </div>
+          <div class="action-buttons">
+            <button class="btn-action">
+              <span class="material-symbols-outlined">filter_list</span> Filter
+            </button>
+            <button class="btn-action">
+              <span class="material-symbols-outlined">file_download</span> Export
+            </button>
+          </div>
+        </div>
+
+        <!-- AG-GRID COMPONENT INTEGRATION CONTAINER -->
+        <div class="grid-card-container">
+          <app-products-list></app-products-list>
+        </div>
+      </section>
+
+      <!-- Catalog Performance Section -->
+      <section class="performance-section">
+        <div class="performance-card">
+          <div class="performance-info">
+            <h5 class="performance-title">Catalog Performance</h5>
+            <p class="performance-desc">Inventory levels across your global warehouses are currently at 84% capacity. Monitor stock alerts for high-demand regions like NYC and London.</p>
+            <button class="btn-link">
+              View Logistics Report <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+          </div>
+          
+          <!-- Performance Bar Chart Visual -->
+          <div class="chart-container">
+            <div class="chart-bar" style="height: 60%"></div>
+            <div class="chart-bar" style="height: 45%"></div>
+            <div class="chart-bar" style="height: 85%"></div>
+            <div class="chart-bar" style="height: 30%"></div>
+            <div class="chart-bar" style="height: 70%"></div>
+            <div class="chart-bar" style="height: 55%"></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const navItems = document.querySelectorAll('.sidebar-nav .nav-item');
+      navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+          navItems.forEach(i => i.classList.remove('active'));
+          item.classList.add('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,10 +1,11 @@
-import { Component, OnInit, signal, inject } from '@angular/core';
+import { Component, OnInit, signal, inject, computed } from '@angular/core';
 import { CommonModule, TitleCasePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { IProductCard } from '../../shared/interfaces/product-card';
 import { ProductCards } from '../../shared/components/product-cards/product-cards';
-import { map } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
+import { ProductService } from '../../shared/services/product-service';
 
 type SortOption =
   | 'most-popular'
@@ -16,7 +17,7 @@ type SortOption =
 @Component({
   selector: 'app-shop',
   standalone: true,
-  imports: [CommonModule, TitleCasePipe, ProductCards], // DO NOT put HttpClientModule here if using provideHttpClient()
+  imports: [CommonModule, TitleCasePipe, ProductCards],
   templateUrl: './shop.html',
   styleUrls: ['./shop.css']
 })
@@ -24,24 +25,21 @@ type SortOption =
 export class Shop implements OnInit {
   private http = inject(HttpClient);
   private route = inject(ActivatedRoute);
+  private productService = inject(ProductService);
+
+  allProducts = signal<IProductCard[]>([]);
+  searchQuery = signal<string>('');
 
   products = signal<IProductCard[]>([]);
   categories = signal<string[]>([]);
   selectedCategory = signal<string>('all');
   selectedSort = signal<SortOption>('most-popular');
   loading = signal<boolean>(true);
-  //this part will be used so when we go to a certain category it will show up
    
-  
   ngOnInit(): void {
     this.fetchCategories();
-      this.route.queryParams.subscribe(params => {
-      const cat = params['category'];
-      if (cat) {
-        this.selectedCategory.set(cat);
-      }
+    // Removed route.queryParams from here to fix the injection context error
     this.fetchProducts();
-      });
   }
 
   fetchCategories(): void {
@@ -70,7 +68,7 @@ export class Shop implements OnInit {
         },
         error: (err) => {
           console.error('Error fetching products:', err);
-          this.loading.set(false); // Ensures loading screen clears even if API fails
+          this.loading.set(false);
         }
       });
   }
@@ -90,39 +88,62 @@ export class Shop implements OnInit {
     this.sortProducts();
   }
 
-  private sortProducts(): void{
+  private sortProducts(): void {
     const sortedProducts = [...this.products()];
     const sortOption = this.selectedSort();
 
     if (sortOption === 'most-popular') {
-      sortedProducts.sort(
-        (a, b) => b.rating.count - a.rating.count
-      );
+      sortedProducts.sort((a, b) => b.rating.count - a.rating.count);
     }
-
     if (sortOption === 'highest-rating') {
-      sortedProducts.sort(
-        (a, b) => b.rating.rate - a.rating.rate
-      );
+      sortedProducts.sort((a, b) => b.rating.rate - a.rating.rate);
     }
-
     if (sortOption === 'price-low-high') {
-      sortedProducts.sort(
-        (a, b) => a.price - b.price
-      );
+      sortedProducts.sort((a, b) => a.price - b.price);
     }
-
     if (sortOption === 'price-high-low') {
-      sortedProducts.sort(
-        (a, b) => b.price - a.price
-      );
+      sortedProducts.sort((a, b) => b.price - a.price);
     }
-
     if (sortOption === 'a-z') {
-      sortedProducts.sort(
-        (a, b) => a.title.localeCompare(b.title)
-      );
+      sortedProducts.sort((a, b) => a.title.localeCompare(b.title));
     }
     this.products.set(sortedProducts);
+  }
+
+  filteredProducts = computed(() => {
+    const query = this.searchQuery().toLowerCase().trim();
+    const productsList = this.products();
+
+    if (!query) return productsList;
+    
+    return productsList.filter(product => {
+      const titleMatch = product.title?.toLowerCase().includes(query) ?? false;
+      const categoryMatch = product.category?.toLowerCase().includes(query) ?? false;
+
+      return titleMatch || categoryMatch;
+    });
+  });
+
+  constructor() {
+    this.productService.getProducts().subscribe({
+      next: (products) => {
+        this.allProducts.set(products);
+      },
+      error: (err) => {
+        console.error('Failed to load products', err);
+      }
+    });
+
+    // Handle both category and search query parameters safely inside the injection context
+    this.route.queryParams.pipe(takeUntilDestroyed()).subscribe(params => {
+      const cat = params['category'];
+      if (cat && cat !== this.selectedCategory()) {
+        this.selectedCategory.set(cat);
+        this.fetchProducts();
+      }
+
+      const searchParam = params['search'] || '';
+      this.searchQuery.set(searchParam);
+    });
   }
 }

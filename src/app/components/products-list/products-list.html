@@ -1,9 +1,12 @@
 <div style="width: 100%; height: 100%;">
   <ag-grid-angular
     style="width: 100%; height: 100%; display: block;"
-    class="ag-theme-quartz"
-    [rowData]="rowData"
+    class="ag-theme-quartz custom-elegance-theme"
+    [rowData]="rowData()"
     [columnDefs]="colDefs"
-    [pagination]="true">
+    [defaultColDef]="defaultColDef"
+    [pagination]="true"
+    [paginationPageSize]="10"
+    [paginationPageSizeSelector]="[5,10,20]">
   </ag-grid-angular>
 </div>
