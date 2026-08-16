@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Volkhov:wght@400;700&display=swap');
 
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 20px;
+  background-color: #fff9ec;
+}
 * {
   margin: 0;
   padding: 0;
@@ -27,6 +36,7 @@ body {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   border: 1px solid #eaeaea;
   min-height: 600px;
+  margin: 0 auto;
 }
 
 /* Left Image Column */
@@ -137,6 +147,19 @@ body {
 .btn-secondary:hover {
   background-color: #f9f9f9;
   border-color: #999999;
+}
+
+/* Login Error Alert Banner */
+.error-banner {
+  background-color: rgba(251, 99, 118, 0.12); /* Soft red background */
+  color: #FB6376;                           /* Red text color matching FASCO brand */
+  border: 1px solid rgba(251, 99, 118, 0.3);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 

@@ -97,3 +97,28 @@
   font-size: 0.95rem;
   margin: 0 0 1rem 0;
 }
+.cart-action-wrapper {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important; /* Removes any slide-up hover animation */
+  display: flex;                        /* Or inline-block / block depending on layout */
+  align-items: center;
+  justify-content: center;
+}
+
+.product-details,
+.cart-action-wrapper,
+.btn-wrapper {
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.btn-add-to-cart,
+button[type="submit"],
+.btn-primary {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: none !important;
+}

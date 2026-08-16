@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
 import { AuthService } from '../../core/auth/auth-service';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   imports: [ReactiveFormsModule, RouterLink],
@@ -10,10 +10,12 @@ import { RouterLink } from '@angular/router';
 })
 export class Login {
   loginForm: FormGroup;
+  errorMessage: string | null = null;
     
     constructor(
       private formBuilder: FormBuilder,
-      private authService: AuthService
+      private authService: AuthService,
+      private router: Router
     ){
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
@@ -22,14 +24,17 @@ export class Login {
   } 
     
   onSubmit(){
+    this.errorMessage = null;
     if (this.loginForm.valid){
       const {email, password} = this.loginForm.value;
       this.authService.authentication(email, password).subscribe({
         next: (token) => {
           console.log ('Login successful, token:', token);
+          this.router.navigate(['/home']);
       },
     error: (err) => {
       console.error('Login failed', err);
+      this.errorMessage = 'Invalid email or password.';
     }
     });  
   } else {

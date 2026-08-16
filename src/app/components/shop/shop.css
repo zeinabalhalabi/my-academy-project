@@ -1,8 +1,8 @@
 /* Color Variables */
 :host {
-  --primary-color: #503a42;
-  --accent-color: #fb3376;
-  --bg-light: #f9f9f9;
+  --primary-color: #5d2a42;
+  --accent-color: #fb6376;
+  --bg-light: #fff9ec;
   --border-color: #e5e5e5;
   --text-main: #2d2d2d;
   --text-muted: #777777;
@@ -34,11 +34,12 @@
 
 .breadcrumb a:hover {
   text-decoration: underline;
+  color:#fb6376
 }
 
 /* Category Filter Bar */
 .category-bar {
-  background-color: var(--bg-light);
+  background-color: #fff9ec;
   padding: 1.25rem 1rem;
   border-bottom: 1px solid var(--border-color);
   margin-bottom: 2rem;
@@ -66,14 +67,14 @@
 }
 
 .category-btn:hover {
-  border-color: var(--accent-color);
+  border-color: #5d2a42;
   color: var(--accent-color);
 }
 
 .category-btn.active {
-  background-color: var(--primary-color);
-  color: #ffffff;
-  border-color: var(--primary-color);
+  background-color: #fb6376;
+  color: #fff9ec;
+  border-color: #fb6376;
 }
 
 /* Shop Layout */
@@ -102,7 +103,7 @@
 .product-card {
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: #fff9ec;
   border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
@@ -119,7 +120,7 @@
   width: 100%;
   height: 240px;
   padding: 1.5rem;
-  background-color: #ffffff;
+  background-color: #fff9ec;
   display: flex;
   align-items: center;      /* Vertically center image */
   justify-content: center; /* Horizontally center image */
@@ -141,7 +142,7 @@
   left: 0;
   width: 100%;
   padding: 0.75rem 0;       /* Equal top/bottom padding */
-  background-color: var(--primary-color);
+  background-color: #5d2a42;
   color: #ffffff;
   border: none;
   font-weight: 600;

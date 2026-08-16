@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { IProductCard } from '../../shared/interfaces/product-card';
 import { ProductCards } from '../../shared/components/product-cards/product-cards';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ProductService } from '../../shared/services/product-service';
 
 type SortOption =
@@ -17,7 +17,7 @@ type SortOption =
 @Component({
   selector: 'app-shop',
   standalone: true,
-  imports: [CommonModule, TitleCasePipe, ProductCards],
+  imports: [CommonModule, TitleCasePipe, ProductCards, RouterLink],
   templateUrl: './shop.html',
   styleUrls: ['./shop.css']
 })

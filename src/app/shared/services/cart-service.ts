@@ -1,4 +1,4 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, effect } from '@angular/core';
 
 export interface CartItem {
   id: string;
@@ -14,6 +14,7 @@ export interface CartItem {
 })
 
 export class CartService {
+
 readonly cartItems = signal<CartItem[]>([]);
 
 readonly subtotal = computed(() =>

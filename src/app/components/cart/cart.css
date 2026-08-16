@@ -234,7 +234,7 @@
 
 .btn-continue {
   display: inline-block;
-  background-color: #fb3761;
+  background-color: #fb6376;
   color: #ffffff;
   padding: 0.75rem 2rem;
   border-radius: 0.375rem;
@@ -244,5 +244,5 @@
 }
 
 .btn-continue:hover {
-  background-color: #48061e;
+  background-color: #5d2a42;
 }

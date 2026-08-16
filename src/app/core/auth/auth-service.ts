@@ -37,9 +37,9 @@ export class AuthService {
     setToken(token: string): void {
         this.cookieService.set(this.tokenKey, token, {path : '/', expires: 7});
     }
-    //token decoding functionality
     
-    private decodeAndSetUser(token: string): void {
+    //token decoding functionality
+        private decodeAndSetUser(token: string): void {
         try {
             // Decodes the payload payload portion of a standard JWT
             const payload = token.split('.')[1];

@@ -44,6 +44,11 @@ export const routes: Routes = [
             import ('./components/admin-dashboard/admin-dashboard')
                 .then(m => m.AdminDashboard), 
                     canActivate: [AdminGuard]},
-                    
+    {path: 'admin-dashboard/dashboard',
+         loadComponent: () =>
+            import ('./components/admin-dashboard/dashboard/dashboard')
+                .then(m => m.Dashboard), 
+                    canActivate: [AdminGuard]},
+
     {path: 'home', component: Home}
 ];

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FASCO Admin Dashboard</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Volkhov:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="dashboard-body">
+
+    <div class="dashboard-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <!-- Header Section -->
+            <div class="sidebar-header">
+                <div class="admin-profile">
+                    <div class="avatar-container">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwj71hvD1hDqKZn0Atx0PGIBmmYzUhHCfB_P7gkJzlHt_HOtPn6Q07KRUXVUIQhEYwaxz0ybBmQsac7G2FpfmmA_q6WYD1pey-Q5sh549qfLRs5AtYsLAumRLheREaWgcc_Qe8WfIUS0XiEkbWVNYNsp7l9bX3YOg_zdyH-0_9k3S5tMp2PmI5TAqSoWo5jc98UBzLk_OvwPi12KmRax59CXt_V8quiQsmrCbFDDdPpgLqO0CYpChQHXqmsGOp8zE7bCSGdr2pJNs" alt="Admin portrait">
+                    </div>
+                    <div>
+                        <p class="admin-name">Admin Panel</p>
+                        <p class="admin-role">Manage Store</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Items -->
+            <nav class="sidebar-nav custom-scrollbar">
+                <a href="#" class="nav-item active">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="material-symbols-outlined">analytics</span>
+                    <span>Analytics</span>
+                </a>
+                <a routerLink="/admin-dashboard" class="nav-item">
+                    <span class="material-symbols-outlined">inventory_2</span>
+                    <span>Inventory</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    <span>Orders</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="material-symbols-outlined">group</span>
+                    <span>Customers</span>
+                </a>
+
+                <div class="nav-divider">
+                    <a href="#" class="nav-item">
+                        <span class="material-symbols-outlined">settings</span>
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Logout -->
+            <div class="sidebar-footer">
+                <button class="logout-btn">
+                    <span class="material-symbols-outlined logout-icon">logout</span>
+                    <span>Sign Out</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Header Action Row -->
+            <header class="content-header">
+                <div>
+                    <p class="section-label">Internal Overview</p>
+                    <h2 class="page-title">Store Performance</h2>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-primary">
+                        <span class="material-symbols-outlined text-sm">download</span>
+                        Export Data
+                    </button>
+                </div>
+            </header>
+
+            <!-- High Level Stat Cards -->
+            <section class="stats-grid">
+                <!-- Revenue Card -->
+                <div class="stat-card">
+                    <div class="stat-card-content">
+                        <p class="stat-title">Total Revenue</p>
+                        <h3 class="stat-value">$128,430.00</h3>
+                        <div class="stat-trend">
+                            <span class="material-symbols-outlined">trending_up</span>
+                            <span>+14.2% from last month</span>
+                        </div>
+                    </div>
+                    <div class="stat-bg-icon">
+                        <span class="material-symbols-outlined">payments</span>
+                    </div>
+                </div>
+
+                <!-- Orders Card -->
+                <div class="stat-card">
+                    <div class="stat-card-content">
+                        <p class="stat-title">Orders Processed</p>
+                        <h3 class="stat-value">1,248</h3>
+                        <div class="stat-trend">
+                            <span class="material-symbols-outlined">shopping_bag</span>
+                            <span>98.5% fulfillment rate</span>
+                        </div>
+                    </div>
+                    <div class="stat-bg-icon">
+                        <span class="material-symbols-outlined">order_approve</span>
+                    </div>
+                </div>
+
+                <!-- Customers Card -->
+                <div class="stat-card">
+                    <div class="stat-card-content">
+                        <p class="stat-title">New Customers</p>
+                        <h3 class="stat-value">482</h3>
+                        <div class="stat-trend">
+                            <span class="material-symbols-outlined">person_add</span>
+                            <span>+8% growth this week</span>
+                        </div>
+                    </div>
+                    <div class="stat-bg-icon">
+                        <span class="material-symbols-outlined">group</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sales Trends and Inventory Section -->
+            <section class="middle-grid">
+                <!-- Sales Trends Card -->
+                <div class="card sales-card">
+                    <div class="card-header">
+                        <h4 class="card-title">Sales Trends</h4>
+                        <div class="filter-pills">
+                            <button class="pill pill-active">Monthly</button>
+                            <button class="pill pill-outline">Weekly</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Chart Bar Simulation -->
+                    <div class="sales-chart">
+                        <div class="chart-column h-66">
+                            <div class="chart-bar scale-75"></div>
+                        </div>
+                        <div class="chart-column h-100">
+                            <div class="chart-bar scale-90"></div>
+                        </div>
+                        <div class="chart-column h-80">
+                            <div class="chart-bar scale-60"></div>
+                        </div>
+                        <div class="chart-column h-100">
+                            <div class="chart-bar scale-100 active-bar"></div>
+                        </div>
+                        <div class="chart-column h-83">
+                            <div class="chart-bar scale-80"></div>
+                        </div>
+                        <div class="chart-column h-66">
+                            <div class="chart-bar scale-50"></div>
+                        </div>
+                    </div>
+                    <div class="chart-months">
+                        <span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span>
+                    </div>
+                </div>
+
+                <!-- Inventory Health Summary Widget -->
+                <div class="card inventory-card">
+                    <h4 class="card-title">Inventory Health</h4>
+                    <div class="inventory-body">
+                        <div class="efficiency-block">
+                            <div class="efficiency-header">
+                                <span class="stat-title">Stock Efficiency</span>
+                                <span class="efficiency-value">94%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 94%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="status-list">
+                            <div class="status-item">
+                                <span class="material-symbols-outlined icon-warning">warning</span>
+                                <div>
+                                    <p class="status-title">8 Low Stock Items</p>
+                                    <p class="status-desc">Reorder suggested within 48h</p>
+                                </div>
+                            </div>
+                            <div class="status-item">
+                                <span class="material-symbols-outlined icon-success">check_circle</span>
+                                <div>
+                                    <p class="status-title">Awaiting Delivery</p>
+                                    <p class="status-desc">12 shipments arriving today</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-outline">Full Audit</button>
+                </div>
+            </section>
+
+            <!-- Bottom Section: Category Distribution & Region Stats -->
+            <section class="bottom-grid">
+                <!-- Top Categories Distribution -->
+                <div class="card categories-card">
+                    <h5 class="card-title">Top Categories</h5>
+                    <div class="category-list">
+                        <!-- Category Item -->
+                        <div class="category-item">
+                            <div class="category-meta">
+                                <div class="category-info">
+                                    <span class="category-name">Women's Clothing</span>
+                                    <span class="category-growth text-secondary">+$12.4k growth</span>
+                                </div>
+                                <div class="category-value">
+                                    <span class="amount">$57,793</span>
+                                    <span class="percentage">45%</span>
+                                </div>
+                            </div>
+                            <div class="progress-bar-sm">
+                                <div class="progress-fill-sm" style="width: 45%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Category Item -->
+                        <div class="category-item">
+                            <div class="category-meta">
+                                <div class="category-info">
+                                    <span class="category-name">Men's Clothing</span>
+                                    <span class="category-growth text-secondary">+$8.2k growth</span>
+                                </div>
+                                <div class="category-value">
+                                    <span class="amount">$38,529</span>
+                                    <span class="percentage">30%</span>
+                                </div>
+                            </div>
+                            <div class="progress-bar-sm">
+                                <div class="progress-fill-sm" style="width: 30%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Category Item -->
+                        <div class="category-item">
+                            <div class="category-meta">
+                                <div class="category-info">
+                                    <span class="category-name">Accessories</span>
+                                    <span class="category-growth text-muted">Stable</span>
+                                </div>
+                                <div class="category-value">
+                                    <span class="amount">$19,264</span>
+                                    <span class="percentage">15%</span>
+                                </div>
+                            </div>
+                            <div class="progress-bar-sm">
+                                <div class="progress-fill-sm" style="width: 15%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Category Item -->
+                        <div class="category-item">
+                            <div class="category-meta">
+                                <div class="category-info">
+                                    <span class="category-name">Footwear</span>
+                                    <span class="category-growth text-success">+5% growth</span>
+                                </div>
+                                <div class="category-value">
+                                    <span class="amount">$12,843</span>
+                                    <span class="percentage">10%</span>
+                                </div>
+                            </div>
+                            <div class="progress-bar-sm">
+                                <div class="progress-fill-sm" style="width: 10%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Regional Demand -->
+                <div class="card regional-card">
+                    <h5 class="card-title">Regional Demand</h5>
+                    <div class="regional-chart">
+                        <div class="region-bar-group" style="height: 60%">
+                            <div class="tooltip">60%</div>
+                        </div>
+                        <div class="region-bar-group" style="height: 45%">
+                            <div class="tooltip">45%</div>
+                        </div>
+                        <div class="region-bar-group" style="height: 85%">
+                            <div class="tooltip">85%</div>
+                        </div>
+                        <div class="region-bar-group" style="height: 30%">
+                            <div class="tooltip">30%</div>
+                        </div>
+                        <div class="region-bar-group" style="height: 70%">
+                            <div class="tooltip">70%</div>
+                        </div>
+                    </div>
+                    <div class="region-labels">
+                        <span>LND</span><span>PAR</span><span>NYC</span><span>TOK</span><span>MIL</span>
+                    </div>
+
+                    <div class="region-stats-list">
+                        <div class="region-stat-item">
+                            <div class="region-info">
+                                <div class="status-dot dot-secondary"></div>
+                                <div>
+                                    <p class="region-name">North America</p>
+                                    <p class="region-users">8.4k Active Users</p>
+                                </div>
+                            </div>
+                            <div class="region-meta">
+                                <p class="region-orders">420 Orders</p>
+                                <p class="region-tag text-secondary">High Growth</p>
+                            </div>
+                        </div>
+
+                        <div class="region-stat-item">
+                            <div class="region-info">
+                                <div class="status-dot dot-muted"></div>
+                                <div>
+                                    <p class="region-name">Europe</p>
+                                    <p class="region-users">6.2k Active Users</p>
+                                </div>
+                            </div>
+                            <div class="region-meta">
+                                <p class="region-orders">315 Orders</p>
+                                <p class="region-tag text-muted">Stable</p>
+                            </div>
+                        </div>
+
+                        <div class="region-stat-item">
+                            <div class="region-info">
+                                <div class="status-dot dot-success"></div>
+                                <div>
+                                    <p class="region-name">Asia Pacific</p>
+                                    <p class="region-users">12.1k Active Users</p>
+                                </div>
+                            </div>
+                            <div class="region-meta">
+                                <p class="region-orders">580 Orders</p>
+                                <p class="region-tag text-success">Rapid Growth</p>
+                            </div>
+                        </div>
+
+                        <div class="region-stat-item">
+                            <div class="region-info">
+                                <div class="status-dot dot-muted"></div>
+                                <div>
+                                    <p class="region-name">Middle East</p>
+                                    <p class="region-users">2.4k Active Users</p>
+                                </div>
+                            </div>
+                            <div class="region-meta">
+                                <p class="region-orders">112 Orders</p>
+                                <p class="region-tag text-muted">Emerging</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Micro-interactions Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navItems = document.querySelectorAll('.sidebar-nav .nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    navItems.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

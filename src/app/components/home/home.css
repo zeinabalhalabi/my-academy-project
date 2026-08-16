@@ -274,10 +274,13 @@ ul {
 .cat-bg {
     width: 100%;
     height: 100%;
+    object-fit: contain;
     background-size: cover;
     background-position: center;
     transition: transform 0.7s ease;
+      
 }
+
 .cat-wrapper:hover .cat-bg { transform: scale(1.05); }
 
 .cat-women { height: 400px; }

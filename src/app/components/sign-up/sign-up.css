@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Volkhov:wght@400;700&display=swap');
 
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 20px;
+  background-color: #fff9ec;
+}
 * {
   margin: 0;
   padding: 0;
@@ -27,6 +36,7 @@ body {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   border: 1px solid #eaeaea;
   min-height: 600px;
+  margin: 0 auto;
 }
 
 /* Left Image Column */
@@ -54,7 +64,7 @@ body {
 .form-container {
   width: 100%;
   max-width: 360px;
-  margin: auto 0;
+  margin: auto;
 }
 
 /* Typography styles matching FASCO branding */
@@ -139,12 +149,24 @@ body {
   border-color: #999999;
 }
 
+.error-text {
+    color: #FB6376
+}
+
+/* Disabled Submit Button Style */
+.btn-primary:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
 
 
 
 /* Tablet & Mobile Responsiveness */
 @media (max-width: 768px) {
-  .container {
+  .signup-container {
     flex-direction: column;
     max-width: 450px;
     min-height: auto;

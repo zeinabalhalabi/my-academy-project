@@ -5,7 +5,7 @@
   padding: 3rem 1.5rem;
   font-family: 'Volkhov', serif;
   color: #1d1c14;
-  background-color: #fff9ec;
+  background-color: #ffffff;
   min-height: 100vh;
 }
 
@@ -89,9 +89,13 @@
 }
 
 .avatar-icon {
-  font-size: 3rem;
+  font-size: 1rem;
   color: #40040f;
   font-variation-settings: 'FILL' 1;
+  margin: auto;
+}
+.profile-img{
+   max-width: max-content;
 }
 
 .profile-title {
@@ -131,9 +135,10 @@
 }
 
 .editorial-btn.outline {
-  background: transparent;
-  border: 1px solid #40040f;
-  color: #40040f;
+  background: #fff9ec;
+  border: 1px solid #fb6376;
+  border-radius: 10px;
+  color: #5d2a42;
 }
 
 .editorial-btn.outline:hover {
@@ -191,7 +196,7 @@
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
   font-weight: 600;
-  color: #40040f;
+  color: #fb6376;
   margin: 0;
 }
 
@@ -229,12 +234,12 @@
 
 .detail-value {
   font-size: 1.1rem;
-  color: #40040f;
+  color: #5d2a42;
 }
 
 /* Rewards Banner Card */
 .rewards-card {
-  background-color: #40040f;
+  background-color: #5d2a42;
   color: #ffffff;
   grid-column: span 12;
   position: relative;
@@ -324,7 +329,7 @@
   font-family: 'Playfair Display', serif;
   font-size: 1.75rem;
   font-weight: 700;
-  color: #40040f;
+  color: #fb6376;
   margin: 0;
 }
 
@@ -332,7 +337,7 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #544243;
+  color: #5d2a42;
   cursor: pointer;
   transition: color 0.2s ease;
 }
@@ -370,7 +375,7 @@
 
 .order-id {
   font-weight: 700;
-  color: #40040f;
+  color: #5d2a42;
   font-size: 0.9rem;
   margin: 0 0 0.2rem 0;
 }

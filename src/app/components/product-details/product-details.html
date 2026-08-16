@@ -29,9 +29,8 @@
 
         <p class="description">{{ prod.description }}</p>
 
-        <!-- Fixed Component Tag (Not Self-Closing) -->
-        <div class="cart-action-wrapper" style="margin-top: 1.5rem; position: relative;">
-          <app-add-to-cart 
+        <div class="cart-action-wrapper" style="margin-top: 1.5rem; position: relative; visibility: visible;">
+          <app-add-to-cart class = "btn-primary btn-add-to-cart"
             [product]="prod"
             [maxStock]="15">
           </app-add-to-cart>
