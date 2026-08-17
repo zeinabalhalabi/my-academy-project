@@ -12,8 +12,16 @@ export interface IUser {
     lastName: string;
     email: string;
     username: string;
-    userRole: UserRole;
+    userRole?: UserRole;
     //password: string;
+}
+
+export interface RegisterPayload {
+  firstName: string;
+  lastName: string;
+  email: string;
+  username: string;
+  password: string;
 }
 
 @Injectable({
@@ -59,10 +67,12 @@ export class AuthService {
     }
 
     
-    register(payload: IUser): Observable<IUser> {
-        return this.http.post<IUser>(
-            'http://localhost:4000/api/auth/register', payload);
-    }
+    register(payload: Omit<IUser, 'userRole'> & { password: string }): Observable<IUser> {
+  return this.http.post<IUser>(
+    'http://localhost:4000/api/auth/register',
+    payload
+  );
+}
     authentication(
         email: string,
         password: string

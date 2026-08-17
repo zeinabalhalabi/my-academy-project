@@ -37,30 +37,42 @@ export class SignUp {
     return password === confirmPassword ? null : { passwordMismatch: true };
   }
 
-  onSubmit(){
-    if (this.signUpForm.valid){
-      const formData = this.signUpForm.value;
-      console.log("Form Data: ", formData);
-      this.authService.register(formData).subscribe({
-        next: (response) => {
-          console.log('Signup successful', response);
-          this.router.navigate(['/login']);
-        },
-        error: (err) => {
-          console.error('Signup failed', err);
-
-          if(err.status === 409 || err.error?.message?.toLowerCase().includes('email')){
-            this.signUpForm.get('email')?.setErrors({ emailInUse: true});
-          }
-          else {
-            alert('Registration failed. Please try again later.')
-          }
-        }
-      })
-    }
-    else {
-      console.log('Form is invalid');
-    }
+  onSubmit(): void {
+  if (this.signUpForm.invalid) {
+    this.signUpForm.markAllAsTouched();
+    return;
   }
+
+  const {
+    confirmPassword,
+    ...registrationData
+  } = this.signUpForm.getRawValue();
+
+  console.log('Data sent to backend:', registrationData);
+
+  this.authService.register(registrationData).subscribe({
+    next: (response) => {
+      console.log('Signup successful', response);
+      this.router.navigate(['/login']);
+    },
+
+    error: (err) => {
+      console.error('Signup failed', err);
+
+      const message = err.error?.message?.toLowerCase() ?? '';
+
+      if (err.status === 409 && message.includes('email')) {
+        this.signUpForm.get('email')?.setErrors({ emailInUse: true });
+      } 
+      else if (err.status === 409 && message.includes('username')) {
+        this.signUpForm.get('username')?.setErrors({ usernameTaken: true });
+      } 
+      else {
+        alert('Registration failed. Please try again.');
+      }
+    }
+  });
 }
+  }
+
   
